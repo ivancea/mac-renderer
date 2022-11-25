@@ -10,4 +10,27 @@
       {{ org.name }}
     </div>
   </div>
+  {% if job.roles %}
+    <div class="right-column__job-roles">
+      {% for role in job.roles %}
+        <div class="right-column__job-role-title">
+          {{ role.name }}
+        </div>
+        {% if role.competences %}
+          <div class="right-column__job-role-competences">
+            <div class="right-column__job-role-competences-title">
+              Competences:
+            </div>
+            <div class="right-column__job-role-competences-container">
+              {% for competence in role.competences %}
+                <div class="right-column__job-role-competence">
+                  {{ competence.name }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>
