@@ -1,16 +1,20 @@
 {% assign mac = include.mac %}
 
 {% capture about_me_content %}
-  {{ mac.aboutMe.profile.description }}
+  <div class="right-column__about-me">
+    {{ mac.aboutMe.profile.description | markdownify }}
+  </div>
 {% endcapture %}
 {% include right-column/section.html title="About me" content=about_me_content %}
 
 
 {% if mac.experience.jobs %}
   {% capture experience_content %}
-    {% for job in mac.experience.jobs %}
-      {% include right-column/job.html job=job %}
-    {% endfor %}
+    <div class="right-column__jobs">
+      {% for job in mac.experience.jobs %}
+        {% include right-column/job.html job=job %}
+      {% endfor %}
+    </div>
   {% endcapture %}
   {% include right-column/section.html title="Work experience" content=experience_content %}
 {% endif %}

@@ -13,23 +13,44 @@
   {% if job.roles %}
     <div class="right-column__job-roles">
       {% for role in job.roles %}
-        <div class="right-column__job-role-title">
-          {{ role.name }}
-        </div>
-        {% if role.competences %}
-          <div class="right-column__job-role-competences">
-            <div class="right-column__job-role-competences-title">
+        <div class="right-column__job-role">
+          <div class="right-column__job-role-dates">
+            {{ role.startDate | date: "%d/%m/%Y" }} -
+            {% if role.finishDate %}
+              {{ role.finishDate | date: "%d/%m/%Y" }}
+            {% else %}
+              Present
+            {% endif %}
+          </div>
+          <div class="right-column__job-role-title">
+            {{ role.name }}
+          </div>
+
+          {% if role.competences %}
+            <div class="right-column__job-role-competences">
+              <!--<div class="right-column__job-role-competences-title">
               Competences:
+              </div>-->
+              <div class="right-column__job-role-competences-container">
+                {% for competence in role.competences %}
+                  <div class="right-column__job-role-competence">
+                    {{ competence.name }}
+                  </div>
+                {% endfor %}
+              </div>
             </div>
-            <div class="right-column__job-role-competences-container">
-              {% for competence in role.competences %}
-                <div class="right-column__job-role-competence">
-                  {{ competence.name }}
+          {% endif %}
+
+          {% if role.challenges %}
+            <div class="right-column__job-role-challenges">
+              {% for challenge in role.challenges %}
+                <div class="right-column__job-role-challenge">
+                  {{ challenge.description | markdownify }}
                 </div>
               {% endfor %}
             </div>
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
       {% endfor %}
     </div>
   {% endif %}

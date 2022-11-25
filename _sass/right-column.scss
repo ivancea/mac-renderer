@@ -1,66 +1,132 @@
 .right-column {
-  padding: 2em;
+  padding: 3em;
   display: flex;
   flex-direction: column;
-  gap: 3em;
+  gap: 2em;
 
   .right-column__section {
-    margin-top: 2em;
-
     .right-column__section-title {
       font-size: 1.5em;
       font-weight: 600;
+      color: #555;
       margin-bottom: 1em;
     }
 
-    .right-column__section-content {}
+    .right-column__section-content {
+      padding-left: 1em;
+    }
   }
 
-  .right-column__job {
-    .right-column__job-organization {
-      display: flex;
-      flex-direction: row;
-      gap: 1.5em;
-      align-items: center;
+  .right-column__about-me {
+    font-size: 1.2em;
+  }
 
-      .right-column__job-organization-image {
-        width: 5em;
-        height: 5em;
-        object-fit: contain;
+  .right-column__jobs {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    // For the left bar on jobs
+    border-left: 0.15em solid darkslateblue;
+    padding-left: 2em;
+
+    .right-column__job {
+      // Show a circle in the left border
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: darkslateblue;
+        position: relative;
+        top: 2.5em;
+        left: -2.6em;
       }
-    }
 
-    .right-column__job-roles {
-      .right-column__job-role-title {
-      }
-
-      .right-column__job-role-competences {
-        max-width: 40em;
+      .right-column__job-organization {
+        // Set margin here as parent can't be flex because of pseudo-element
+        margin-bottom: 1em;
         display: flex;
         flex-direction: row;
-        gap: 0.5em;
+        gap: 1.5em;
+        align-items: center;
 
-        .right-column__job-role-competences-title {
-          height: 100%;
-          font-size: 1.25em;
-          font-weight: 700;
-          text-align: center;
-          padding: 0.5em;
+        .right-column__job-organization-image {
+          width: 4em;
+          height: 4em;
+          object-fit: contain;
         }
 
-        .right-column__job-role-competences-container {
+        .right-column__job-organization-name {
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+      }
+
+      .right-column__job-roles {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .right-column__job-role {
           display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          align-items: center;
-          
-          .right-column__job-role-competence {
-            height: fit-content;
-            background-color: lightgreen;
-            border-radius: 0.5em;
-            padding: 0.25em;
-            margin: 0.25em;
-            display: inline;
+          flex-direction: column;
+          gap: 0.5em;
+
+          .right-column__job-role-dates {
+            font-weight: 700;
+            color: darkslateblue;
+          }
+          .right-column__job-role-title {
+            font-size: 1.25em;
+            font-weight: 600;
+          }
+
+          .right-column__job-role-competences {
+            max-width: 40em;
+            /*display: flex;
+            flex-direction: row;
+            gap: 0.5em;
+
+            .right-column__job-role-competences-title {
+              height: 100%;
+              font-size: 1.25em;
+              font-weight: 700;
+              text-align: center;
+              padding: 0.5em;
+            }*/
+
+            .right-column__job-role-competences-container {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              align-items: center;
+
+              .right-column__job-role-competence {
+                height: fit-content;
+                background-color: aqua;
+                border-radius: 0.5em;
+                padding: 0.25em;
+                margin: 0.25em;
+                display: inline;
+              }
+            }
+          }
+
+          .right-column__job-role-challenges {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+
+            .right-column__job-role-challenge {
+              p:first-child {
+                margin-top: 0;
+              }
+              p:last-child {
+                margin-bottom: 0;
+              }
+            }
           }
         }
       }
