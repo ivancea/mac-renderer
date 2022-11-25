@@ -1,6 +1,6 @@
 # Jekyll MAC renderer
 
-A MAC JSON renderer made in Jekyll, for GitHub Pages.
+A MAC JSON renderer made in Jekyll, for GitHub Pages. An example of the page can be seen here: https://ivancea.github.io/jekyll-mac-renderer/
 
 The MAC format is defined here: https://github.com/getmanfred/mac
 

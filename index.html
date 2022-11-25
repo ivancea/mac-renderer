@@ -10,7 +10,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>{{ full_name }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css"/>
+    <link rel="stylesheet" href={{ "/assets/css/styles.css" | relative_url }}/>
   </head>
   <body class="mac">
     <div class="left-column">{% include left-column.html mac=mac %}</div>
