@@ -1,0 +1,13 @@
+{% assign mac = include.mac %}
+
+{% capture about_me_content %}
+  {{ mac.aboutMe.profile.description }}
+{% endcapture %}
+{% include right-column/section.html title="About me" content=about_me_content %}
+
+{% capture experience_content %}
+  {% for job in mac.experience.jobs %}
+    {% include right-column/job.html job=job %}
+  {% endfor %}
+{% endcapture %}
+{% include right-column/section.html title="Work experience" content=experience_content %}

@@ -1,0 +1,56 @@
+{% assign mac = include.mac %}
+{% assign profile = mac.aboutMe.profile %}
+
+{% if profile.avatar.link %}
+  <div class="left-column__image-holder">
+    <img src="{{ profile.avatar.link }}" alt="{{ profile.avatar.alt }}" class="left-column__image">
+  </div>
+{% endif %}
+
+<div>
+  <div class="left-column__name">
+    {{profile.name}}
+  </div>
+  <div class="left-column__surnames">
+    {{profile.surnames}}
+  </div>
+</div>
+
+<div class="left-column__contact">
+  <div class="left-column__location">
+    {{profile.location.municipality}}, {{profile.location.country}}
+  </div>
+
+  <!-- First, the known links -->
+  {% assign links = mac.aboutMe.relevantLinks | where_exp: "link", "link.type != 'other'" | sort: "type" %}
+  {% for link in links %}
+    {% include left-column/contact-item.html link=link %}
+  {% endfor %}
+
+  <!-- Then, others -->
+  {% assign links = mac.aboutMe.relevantLinks | where: "type", "other" %}
+  {% for link in links %}
+    {% include left-column/contact-item.html link=link %}
+  {% endfor %}
+</div>
+
+<div class="left-column__languages">
+  <div class="left-column__languages-title">
+    Languages
+  </div>
+
+  {% assign languages = mac.knowledge.languages | where: "level", "Native or bilingual proficiency" | map: "name" %}
+  {% include left-column/language-group.html level="Native or bilingual proficiency" languages=languages %}
+
+  {% assign languages = mac.knowledge.languages | where: "level", "Full professional proficiency" | map: "name" %}
+  {% include left-column/language-group.html level="Full professional proficiency" languages=languages %}
+
+  {% assign languages = mac.knowledge.languages | where: "level", "Professional working proficiency" | map: "name" %}
+  {% include left-column/language-group.html level="Professional working proficiency" languages=languages %}
+
+  {% assign languages = mac.knowledge.languages | where: "level", "Limited working proficiency" | map: "name" %}
+  {% include left-column/language-group.html level="Limited working proficiency" languages=languages %}
+
+  {% assign languages = mac.knowledge.languages | where: "level", "Elementary proficiency" | map: "name" %}
+  {% include left-column/language-group.html level="Elementary proficiency" languages=languages %}
+</div>

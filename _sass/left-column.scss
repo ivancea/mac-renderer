@@ -1,0 +1,77 @@
+.left-column {
+  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  .left-column__image-holder {
+    display: flex;
+    justify-content: center;
+
+    .left-column__image {
+      width: 15em;
+      height: 15em;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .left-column__name,
+  .left-column__surnames {
+    font-size: 2em;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .left-column__contact {
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .left-column__contact-item-link {
+      text-decoration: none;
+      display: flex;
+      gap: 0.5em;
+
+      img {
+        width: 1.5em;
+        height: 1.5em;
+        object-fit: cover;
+      }
+
+      span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .left-column__languages {
+    padding: 0 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .left-column__languages-title {
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    .left-column__language-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+
+      .left-column__language-level {
+        font-size: 1.2em;
+        font-weight: 500;
+      }
+      
+      .left-column__language {
+        padding-left: 1em;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{% assign job = include.job %}
+{% assign org = job.organization %}
+
+<div class="right-column__job">
+  <div class="right-column__job-organization">
+    {% if org.image.link %}
+      <img class="right-column__job-organization-image" src="{{ org.image.link }}" alt="{{ org.image.alt }}"/>
+    {% endif %}
+    <div class="right-column__job-organization-name">
+      {{ org.name }}
+    </div>
+  </div>
+</div>
