@@ -1,8 +1,8 @@
-title: Home automation adventures
+title: Jekyll MAC renderer
 email: ivancea96@outlook.com
-description: Guía, consejos e historias sobre la automatización del hogar u oficina
-url: "https://ivancea.github.io/home-automation-adventures"
-repository: ivancea/home-automation-adventures
+description: A MAC JSON renderer in Jekyll for GitHub Pages
+url: "https://github.com/ivancea/jekyll-mac-renderer"
+repository: ivancea/jekyll-mac-renderer
 twitter_username: ivancea96
 github_username:  ivancea
 github:
