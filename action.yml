@@ -1,0 +1,31 @@
+name: "Deploy MAC CV to GitHub Pages"
+description: "Deploys a MAC CV repository to GitHub Pages"
+inputs:
+  github-token:
+    description: "The GITHUB_TOKEN secret"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+    - name: Remove test CV/MAC.json file
+      run: |
+        rm -f ${{ github.action_path }}/CV/MAC.json
+    - name: Copy Jekyll action files
+      run: |
+        cp -r ${{ github.action_path }} ./
+    - name: Check that the repository is correct
+      run: |
+        if [ ! -f CV/MAC.json ]; then
+          echo "CV/MAC.json does not exist"
+          exit 1
+        fi
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - uses: helaili/jekyll-action@2.4.0
+      with:
+        token: ${{ inputs.github-token }}
