@@ -8,17 +8,10 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v2
-    - name: Debug
-      shell: bash
-      run: |
-        echo "Current directory: $(pwd)"
-        ls -la
-        echo "Action directory: ${{ github.action_path }}"
-        ls -la ${{ github.action_path }}
     - name: Copy Jekyll action files
       shell: bash
       run: |
-        cp -rn ${{ github.action_path }} ./
+        rsync -a -–ignore-existing ${{ github.action_path }} .
     - name: Check that the repository is correct
       shell: bash
       run: |
