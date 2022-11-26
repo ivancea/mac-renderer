@@ -11,7 +11,7 @@ runs:
     - name: Copy Jekyll action files
       shell: bash
       run: |
-        rsync -i --recursive --ignore-existing ${{ github.action_path }} .
+        rsync -i --recursive --ignore-existing ${{ github.action_path }}/ .
     - name: Check that the repository is correct
       shell: bash
       run: |
@@ -28,4 +28,4 @@ runs:
     - uses: helaili/jekyll-action@2.4.0
       with:
         token: ${{ inputs.github-token }}
-        jekyll_build_options: --baseurl "${{ github.event.repository.name }}"
+        jekyll_build_options: --baseurl ${{ github.event.repository.name }}
