@@ -10,7 +10,7 @@
 {% if mac.knowledge.hardSkills %}
   {% capture skills_content %}
     <div class="right-column__skills">
-      {% assign skills = mac.knowledge.hardSkills | where: "level", nil %}
+      {% assign skills = mac.knowledge.hardSkills | where_exp: "skill", "skill.level == nil" %}
       {% include right-column/skill-group.html level=nil skills=skills %}
 
       {% assign skills = mac.knowledge.hardSkills | where: "level", "expert" %}

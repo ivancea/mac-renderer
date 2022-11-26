@@ -33,7 +33,9 @@
       width: 1.5em;
       height: 1.5em;
       object-fit: cover;
-      path { fill: currentColor; }
+      path {
+        fill: currentColor;
+      }
     }
 
     .left-column__location {
@@ -66,18 +68,25 @@
       font-weight: 600;
     }
 
-    .left-column__language-group {
+    .left-column__language-groups {
+      padding-left: 1em;
       display: flex;
       flex-direction: column;
-      gap: 0.5em;
+      gap: 1em;
 
-      .left-column__language-level {
-        font-size: 1.2em;
-        font-weight: 500;
-      }
-      
-      .left-column__language {
-        padding-left: 1em;
+      .left-column__language-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        .left-column__language-level {
+          font-size: 1.2em;
+          font-weight: 500;
+        }
+
+        .left-column__language {
+          padding-left: 1em;
+        }
       }
     }
   }

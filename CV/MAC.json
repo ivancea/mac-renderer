@@ -621,8 +621,7 @@
   "knowledge": {
     "languages": [
       {
-        "name": "English",
-        "level": "Full professional proficiency"
+        "name": "English"
       },
       {
         "name": "Galician",
@@ -659,6 +658,7 @@
         }
       },
       {
+        "level": "expert",
         "skill": {
           "name": "Git",
           "type": "technology"
