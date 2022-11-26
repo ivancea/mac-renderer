@@ -25,14 +25,34 @@
   {% endif %}
 
   {% if mac.aboutMe.relevantLinks %}
-    <!-- First, the known links -->
-    {% assign links = mac.aboutMe.relevantLinks | where_exp: "link", "link.type != 'other'" | sort: "type" %}
+    <!-- First, the public contact links -->
+    {% if mac.careerPreferences.contact.publicProfiles %}
+      {% assign public_profile_links = mac.careerPreferences.contact.publicProfiles %}
+
+      {% for link in public_profile_links %}
+        {% include left-column/contact-item.html link=link %}
+      {% endfor %}
+    {% else %}
+      {% assign public_profile_links = "" | split: '' %}
+    {% endif %}
+
+    <!-- Filter relevant links that aren't contact ones -->
+    {% assign public_profile_urls = public_profile_links | map: "URL" %}
+    {% assign non_contact_links = "" | split: '' %}
+    {% for link in mac.aboutMe.relevantLinks %}
+      {% unless public_profile_urls contains link.URL %}
+        {% assign non_contact_links = non_contact_links | push: link %}
+      {% endunless %}
+    {% endfor %}
+
+    <!-- Second, the known links -->
+    {% assign links = non_contact_links | where_exp: "link", "link.type != 'other'" %}
     {% for link in links %}
       {% include left-column/contact-item.html link=link %}
     {% endfor %}
 
     <!-- Then, others -->
-    {% assign links = mac.aboutMe.relevantLinks | where: "type", "other" %}
+    {% assign links = non_contact_links | where: "type", "other" %}
     {% for link in links %}
       {% include left-column/contact-item.html link=link %}
     {% endfor %}

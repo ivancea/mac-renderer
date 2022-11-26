@@ -12,8 +12,8 @@
 {% endcapture %}
 
 <div class="left-column__contact-item">
-  <a href="{{url}}" class="left-column__contact-item-link">
+  <a href="{{ url }}" class="left-column__contact-item-link">
     {{title}}
-    <span>{{url | replace: "https://"}}</span>
+    <span>{{ url | replace: "https://" | url_decode }}</span>
   </a>
 </div>
