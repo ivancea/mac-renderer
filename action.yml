@@ -11,7 +11,7 @@ runs:
     - name: Copy Jekyll action files
       shell: bash
       run: |
-        rsync -a -–ignore-existing ${{ github.action_path }} .
+        rsync -a --ignore-existing ${{ github.action_path }} .
     - name: Check that the repository is correct
       shell: bash
       run: |
