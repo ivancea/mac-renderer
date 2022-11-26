@@ -122,7 +122,7 @@
         .right-column__project-details-url {
           font-size: 0.8em;
           text-decoration: none;
-          color: #55A;
+          color: #55a;
 
           .right-column__project-details-url-icon {
             width: 1em;
@@ -136,6 +136,84 @@
           border-left: 0.15em dotted $color;
           padding-left: 1em;
         }
+      }
+    }
+  }
+
+  .right-column__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    // If this changes, the default icon must be change too
+    $color: coral;
+
+    // For the left bar
+    border-left: 0.15em solid $color;
+    padding-left: 2em;
+
+    .right-column__highlight {
+      // Show a circle in the left border
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: $color;
+        position: relative;
+        top: 2.5em;
+        left: -2.6em;
+      }
+
+      .right-column__highlight-title {
+        // Set margin here as parent can't be flex because of pseudo-element
+        margin-bottom: 1em;
+        display: flex;
+        flex-direction: row;
+        gap: 1.5em;
+        align-items: center;
+
+        .right-column__highlight-title-image {
+          width: 4em;
+          height: 4em;
+          object-fit: contain;
+        }
+
+        .right-column__highlight-title-name {
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+      }
+
+      .right-column__highlight-details {
+        // Set margin here as parent can't be flex because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__highlight-details-url {
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #55a;
+
+          .right-column__highlight-details-url-icon {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+            margin-right: 0.5em;
+          }
+        }
+
+        .right-column__highlight-details-description {
+          border-left: 0.15em dotted $color;
+          padding-left: 1em;
+        }
+      }
+
+      .right-column__highlight-date {
+        // Set margin here as parent can't be flex because of pseudo-element
+        margin-bottom: 1em;
+        font-weight: 700;
+        color: #555;
       }
     }
   }

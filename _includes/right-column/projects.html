@@ -13,7 +13,7 @@
         {% endif %}
         <div class="right-column__project-title-name">
           {{ details.name }}
-          {% include common/project-type.html type=project.type %}
+          {% include common/type-label.html type=project.type %}
         </div>
       </div>
       {% if details.URL or details.description %}

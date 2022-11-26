@@ -1,0 +1,47 @@
+{% assign highlights = include.highlights %}
+
+<div class="right-column__highlights">
+  {% for highlight in highlights %}
+    {% assign details = highlight.details %}
+
+    <div class="right-column__highlight">
+      <div class="right-column__highlight-title">
+        {% if details.image.link %}
+          <img class="right-column__highlight-title-image" src="{{ details.image.link }}" alt="{{ details.image.alt }}"/>
+        {% else %}
+          <img class="right-column__highlight-title-image" src="{{ "/assets/images/highlight-default-icon.svg" | relative_url }}" alt="highlight">
+        {% endif %}
+        <div class="right-column__highlight-title-name">
+          {{ details.name }}
+          {% include common/type-label.html type=highlight.type %}
+        </div>
+      </div>
+      {% if details.URL or details.description %}
+        <div class="right-column__highlight-details">
+          {% if details.URL %}
+            <a class="right-column__highlight-details-url" href="{{ details.URL }}" target="_blank">
+              <img class="right-column__highlight-details-url-icon" src="{{ "/assets/images/link-icon.svg" | relative_url }}" alt="Link">
+              {{ details.URL | replace: "https://" | url_decode }}
+            </a>
+          {% endif %}
+          {% if details.description %}
+            <div class="right-column__highlight-details-description">
+              {{ details.description | markdownify }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if highlight.publishingDate %}
+        <div class="right-column__highlight-date">
+          {{ highlight.publishingDate | date: "%d/%m/%Y" }}
+        </div>
+      {% endif %}
+
+      {% if highlight.relatedCompetences %}
+        {% assign competences = highlight.relatedCompetences | map: "name" %}
+        {% include common/skills.html skills=competences %}
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

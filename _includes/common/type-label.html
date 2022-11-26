@@ -1,0 +1,11 @@
+{% assign type = include.type %}
+
+{% if type == "proBono" %}
+  <span class="common__type-label">Pro bono</span>
+{% elsif type == "openSource" %}
+  <span class="common__type-label">Open source</span>
+{% elsif type == "sideProject" %}
+  <span class="common__type-label">Side project</span>
+{% elsif type == "personalAchievement" %}
+  <span class="common__type-label">Achievement</span>
+{% endif %}

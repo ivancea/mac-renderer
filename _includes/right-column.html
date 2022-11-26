@@ -42,3 +42,10 @@
   {% endcapture %}
   {% include right-column/section.html title="Projects" content=projects_content %}
 {% endif %}
+
+{% if mac.experience.publicArtifacts %}
+  {% capture highlights_content %}
+    {% include right-column/highlights.html highlights=mac.experience.publicArtifacts %}
+  {% endcapture %}
+  {% include right-column/section.html title="Highlights" content=highlights_content %}
+{% endif %}

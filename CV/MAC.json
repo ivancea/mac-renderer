@@ -596,6 +596,24 @@
         "tags": [
           "Contest"
         ]
+      },
+      {
+        "details": {
+          "name": "Other highlight",
+          "description": "Programming and networking anual contest hosted by Tuenti.",
+          "URL": "https://medium.com/makingtuenti/we-made-the-impossible-possible-in-the-tuenti-challenge-8-edition-619df6d56381"
+        },
+        "type": "achievement",
+        "publishingDate": "2018-05-01",
+        "relatedCompetences": [
+          {
+            "name": "Python",
+            "type": "technology"
+          }
+        ],
+        "tags": [
+          "Contest"
+        ]
       }
     ]
   },
