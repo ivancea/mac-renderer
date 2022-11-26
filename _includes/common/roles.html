@@ -5,9 +5,9 @@
     {% for role in roles %}
       <div class="common__role">
         <div class="common__role-dates">
-          {{ role.startDate | date: "%d/%m/%Y" }} -
+          {{ role.startDate | date: "%m/%Y" }} -
           {% if role.finishDate %}
-            {{ role.finishDate | date: "%d/%m/%Y" }}
+            {{ role.finishDate | date: "%m/%Y" }}
           {% else %}
             Present
           {% endif %}

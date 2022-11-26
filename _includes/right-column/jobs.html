@@ -6,14 +6,22 @@
 
     <div class="right-column__job">
       <div class="right-column__job-organization">
-        {% if org.image.link %}
-          <img class="right-column__job-organization-image" src="{{ org.image.link }}" alt="{{ org.image.alt }}"/>
-        {% else %}
-          <img class="right-column__job-organization-image" src="{{ "/assets/images/job-default-icon.svg" | relative_url }}" alt="Job">
-        {% endif %}
-        <div class="right-column__job-organization-name">
-          {{ org.name }}
+        <div class="right-column__job-organization-title">
+          {% if org.image.link %}
+            <img class="right-column__job-organization-image" src="{{ org.image.link }}" alt="{{ org.image.alt }}"/>
+          {% else %}
+            <img class="right-column__job-organization-image" src="{{ "/assets/images/job-default-icon.svg" | relative_url }}" alt="Job">
+          {% endif %}
+          <div class="right-column__job-organization-name">
+            {{ org.name }}
+          </div>
         </div>
+        {% if org.URL %}
+          <a class="right-column__job-organization-url" href="{{ org.URL }}" target="_blank">
+            <img class="right-column__job-organization-url-icon" src="{{ "/assets/images/link-icon.svg" | relative_url }}" alt="Link">
+            {{ org.URL | replace: "https://" | url_decode }}
+          </a>
+        {% endif %}
       </div>
 
       {% include common/roles.html roles=job.roles %}

@@ -51,19 +51,37 @@
         // Set margin here as parent can't be flex because of pseudo-element
         margin-bottom: 1em;
         display: flex;
-        flex-direction: row;
-        gap: 1.5em;
-        align-items: center;
+        flex-direction: column;
+        gap: 1em;
 
-        .right-column__job-organization-image {
-          width: 4em;
-          height: 4em;
-          object-fit: contain;
+        .right-column__job-organization-title {
+          display: flex;
+          flex-direction: row;
+          gap: 1.5em;
+          align-items: center;
+
+          .right-column__job-organization-image {
+            width: 4em;
+            height: 4em;
+            object-fit: contain;
+          }
+
+          .right-column__job-organization-name {
+            font-size: 1.5em;
+            font-weight: 600;
+          }
         }
 
-        .right-column__job-organization-name {
-          font-size: 1.5em;
-          font-weight: 600;
+        .right-column__job-organization-url {
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #55a;
+
+          .right-column__job-organization-url-icon {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+          }
         }
       }
     }
@@ -128,7 +146,6 @@
             width: 1em;
             height: 1em;
             object-fit: contain;
-            margin-right: 0.5em;
           }
         }
 
@@ -199,7 +216,6 @@
             width: 1em;
             height: 1em;
             object-fit: contain;
-            margin-right: 0.5em;
           }
         }
 
