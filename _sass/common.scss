@@ -14,3 +14,49 @@
     display: inline;
   }
 }
+
+.common__project-type {
+  background-color: lightgreen;
+  font-size: 0.8em;
+  border-radius: 0.5em;
+  padding: 0.25em;
+}
+
+.common__roles {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+
+  .common__role {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    .common__role-dates {
+      font-weight: 700;
+      color: #555;
+    }
+    .common__role-title {
+      font-size: 1.25em;
+      font-weight: 600;
+    }
+
+    .common__role-competences {
+    }
+
+    .common__role-challenges {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+
+      .common__role-challenge {
+        p:first-child {
+          margin-top: 0;
+        }
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

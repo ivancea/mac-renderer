@@ -7,17 +7,6 @@
 {% endcapture %}
 {% include right-column/section.html title="About me" content=about_me_content %}
 
-{% if mac.experience.jobs %}
-  {% capture experience_content %}
-    <div class="right-column__jobs">
-      {% for job in mac.experience.jobs %}
-        {% include right-column/job.html job=job %}
-      {% endfor %}
-    </div>
-  {% endcapture %}
-  {% include right-column/section.html title="Work experience" content=experience_content %}
-{% endif %}
-
 {% if mac.knowledge.hardSkills %}
   {% capture skills_content %}
     <div class="right-column__skills">
@@ -38,4 +27,18 @@
     </div>
   {% endcapture %}
   {% include right-column/section.html title="Skills" content=skills_content %}
+{% endif %}
+
+{% if mac.experience.jobs %}
+  {% capture jobs_content %}
+    {% include right-column/jobs.html jobs=mac.experience.jobs %}
+  {% endcapture %}
+  {% include right-column/section.html title="Work experience" content=jobs_content %}
+{% endif %}
+
+{% if mac.experience.projects %}
+  {% capture projects_content %}
+    {% include right-column/projects.html projects=mac.experience.projects %}
+  {% endcapture %}
+  {% include right-column/section.html title="Projects" content=projects_content %}
 {% endif %}

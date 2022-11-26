@@ -26,8 +26,11 @@
     flex-direction: column;
     gap: 2em;
 
-    // For the left bar on jobs
-    border-left: 0.15em solid darkslateblue;
+    // If this changes, the default icon must be change too
+    $color: darkslateblue;
+
+    // For the left bar
+    border-left: 0.15em solid $color;
     padding-left: 2em;
 
     .right-column__job {
@@ -38,7 +41,7 @@
         width: 1em;
         height: 1em;
         border-radius: 50%;
-        background-color: darkslateblue;
+        background-color: $color;
         position: relative;
         top: 2.5em;
         left: -2.6em;
@@ -63,43 +66,75 @@
           font-weight: 600;
         }
       }
+    }
+  }
 
-      .right-column__job-roles {
+  .right-column__projects {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    // If this changes, the default icon must be change too
+    $color: darkviolet;
+
+    // For the left bar
+    border-left: 0.15em solid $color;
+    padding-left: 2em;
+
+    .right-column__project {
+      // Show a circle in the left border
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: $color;
+        position: relative;
+        top: 2.5em;
+        left: -2.6em;
+      }
+
+      .right-column__project-title {
+        // Set margin here as parent can't be flex because of pseudo-element
+        margin-bottom: 1em;
         display: flex;
-        flex-direction: column;
-        gap: 1em;
+        flex-direction: row;
+        gap: 1.5em;
+        align-items: center;
 
-        .right-column__job-role {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5em;
+        .right-column__project-title-image {
+          width: 4em;
+          height: 4em;
+          object-fit: contain;
+        }
 
-          .right-column__job-role-dates {
-            font-weight: 700;
-            color: darkslateblue;
+        .right-column__project-title-name {
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+      }
+
+      .right-column__project-details {
+        // Set margin here as parent can't be flex because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__project-details-url {
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #55A;
+
+          .right-column__project-details-url-icon {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+            margin-right: 0.5em;
           }
-          .right-column__job-role-title {
-            font-size: 1.25em;
-            font-weight: 600;
-          }
+        }
 
-          .right-column__job-role-competences {
-          }
-
-          .right-column__job-role-challenges {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5em;
-
-            .right-column__job-role-challenge {
-              p:first-child {
-                margin-top: 0;
-              }
-              p:last-child {
-                margin-bottom: 0;
-              }
-            }
-          }
+        .right-column__project-details-description {
+          border-left: 0.15em dotted $color;
+          padding-left: 1em;
         }
       }
     }

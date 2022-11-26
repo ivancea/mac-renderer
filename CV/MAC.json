@@ -171,11 +171,7 @@
       },
       {
         "organization": {
-          "name": "Corunet",
-          "image": {
-            "alt": "corunet.svg",
-            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/22/04/22/40dfc061-85e7-465e-b39f-87e35aa7f1d7_corunet.svg"
-          }
+          "name": "Corunet"
         },
         "roles": [
           {

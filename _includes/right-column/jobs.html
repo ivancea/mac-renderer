@@ -1,0 +1,22 @@
+{% assign jobs = include.jobs %}
+
+<div class="right-column__jobs">
+  {% for job in jobs %}
+    {% assign org = job.organization %}
+
+    <div class="right-column__job">
+      <div class="right-column__job-organization">
+        {% if org.image.link %}
+          <img class="right-column__job-organization-image" src="{{ org.image.link }}" alt="{{ org.image.alt }}"/>
+        {% else %}
+          <img class="right-column__job-organization-image" src="{{ "/assets/images/job-default-icon.svg" | relative_url }}" alt="Job">
+        {% endif %}
+        <div class="right-column__job-organization-name">
+          {{ org.name }}
+        </div>
+      </div>
+
+      {% include common/roles.html roles=job.roles %}
+    </div>
+  {% endfor %}
+</div>
