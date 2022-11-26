@@ -8,14 +8,10 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v2
-    - name: Remove test CV/MAC.json file
-      shell: bash
-      run: |
-        rm -f ${{ github.action_path }}/CV/MAC.json
     - name: Copy Jekyll action files
       shell: bash
       run: |
-        cp -r ${{ github.action_path }} ./
+        cp -rn ${{ github.action_path }} ./
     - name: Check that the repository is correct
       shell: bash
       run: |
