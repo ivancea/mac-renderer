@@ -8,10 +8,6 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v2
-    - name: Copy Jekyll action files
-      shell: bash
-      run: |
-        rsync -i --recursive --ignore-existing ${{ github.action_path }}/ .
     - name: Check that the repository is correct
       shell: bash
       run: |
@@ -19,6 +15,10 @@ runs:
           echo "CV/MAC.json does not exist"
           exit 1
         fi
+    - name: Copy Jekyll action files
+      shell: bash
+      run: |
+        rsync --recursive --ignore-existing ${{ github.action_path }}/ .
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
