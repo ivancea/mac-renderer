@@ -132,4 +132,33 @@
       }
     }
   }
+
+  .right-column__skills {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .right-column__skill-group {
+      .right-column__skill-group-level {
+        font-size: 1.2em;
+        font-weight: 600;
+      }
+
+      .right-column__skill-group-skills {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .right-column__skill-group-skill {
+          height: fit-content;
+          background-color: aqua;
+          border-radius: 0.5em;
+          padding: 0.25em;
+          margin: 0.25em;
+          display: inline;
+        }
+      }
+    }
+  }
 }

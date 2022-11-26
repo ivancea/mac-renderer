@@ -7,7 +7,6 @@
 {% endcapture %}
 {% include right-column/section.html title="About me" content=about_me_content %}
 
-
 {% if mac.experience.jobs %}
   {% capture experience_content %}
     <div class="right-column__jobs">
@@ -17,4 +16,26 @@
     </div>
   {% endcapture %}
   {% include right-column/section.html title="Work experience" content=experience_content %}
+{% endif %}
+
+{% if mac.knowledge.hardSkills %}
+  {% capture skills_content %}
+    <div class="right-column__skills">
+      {% assign skills = mac.knowledge.hardSkills | where: "level", nil %}
+      {% include right-column/skill-group.html level=nil skills=skills %}
+
+      {% assign skills = mac.knowledge.hardSkills | where: "level", "expert" %}
+      {% include right-column/skill-group.html level="Expert" skills=skills %}
+
+      {% assign skills = mac.knowledge.hardSkills | where: "level", "high" %}
+      {% include right-column/skill-group.html level="High" skills=skills %}
+
+      {% assign skills = mac.knowledge.hardSkills | where: "level", "intermediate" %}
+      {% include right-column/skill-group.html level="Intermediate" skills=skills %}
+
+      {% assign skills = mac.knowledge.hardSkills | where: "level", "basic" %}
+      {% include right-column/skill-group.html level="Basic" skills=skills %}
+    </div>
+  {% endcapture %}
+  {% include right-column/section.html title="Skills" content=skills_content %}
 {% endif %}

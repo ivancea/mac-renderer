@@ -1,0 +1,17 @@
+{% assign level = include.level %}
+{% assign skills = include.skills | map: "skill" %}
+
+{% if skills.size > 0 %}
+  <div class="right-column__skill-group">
+    <div class="right-column__skill-group-level">
+      {{ level }}
+    </div>
+    <div class="right-column__skill-group-skills">
+      {% for skill in skills %}
+        <div class="right-column__skill-group-skill">
+          {{ skill.name }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
