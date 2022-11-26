@@ -84,34 +84,6 @@
           }
 
           .right-column__job-role-competences {
-            max-width: 40em;
-            /*display: flex;
-            flex-direction: row;
-            gap: 0.5em;
-
-            .right-column__job-role-competences-title {
-              height: 100%;
-              font-size: 1.25em;
-              font-weight: 700;
-              text-align: center;
-              padding: 0.5em;
-            }*/
-
-            .right-column__job-role-competences-container {
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              align-items: center;
-
-              .right-column__job-role-competence {
-                height: fit-content;
-                background-color: aqua;
-                border-radius: 0.5em;
-                padding: 0.25em;
-                margin: 0.25em;
-                display: inline;
-              }
-            }
           }
 
           .right-column__job-role-challenges {
@@ -142,22 +114,6 @@
       .right-column__skill-group-level {
         font-size: 1.2em;
         font-weight: 600;
-      }
-
-      .right-column__skill-group-skills {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-
-        .right-column__skill-group-skill {
-          height: fit-content;
-          background-color: aqua;
-          border-radius: 0.5em;
-          padding: 0.25em;
-          margin: 0.25em;
-          display: inline;
-        }
       }
     }
   }

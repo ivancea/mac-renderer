@@ -1,0 +1,9 @@
+{% assign skills = include.skills %}
+
+<div class="common__skills">
+  {% for skill in skills %}
+    <div class="common__skill">
+      {{ skill }}
+    </div>
+  {% endfor %}
+</div>
