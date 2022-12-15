@@ -35,7 +35,14 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-The GitHub page with your CV will be available at `https://<username>.github.io/<repository>/`.
+This will execute the build of the page every time you push to master, or when you manually trigger the workflow.
+
+The build will upload the built page to the `gh-pages` branch, or to the branch you've already configured to be used for GitHub Pages.
+*You can check <https://github.com/helaili/jekyll-action> to see the exact logics, as that action is used underneath.*
+
+If you haven't configured yet your GitHub Pages, go to the repository `Settings`, and in the `Pages` tab, choose `Deploy from a branch` in `Source` and select the `gh-pages` branch. This will enable the site, and launch another action to publish the branch every time it changes.
+
+After that, the GitHub page with your CV will be available at `https://<username>.github.io/<repository>/`.
 
 ### Customization
 
