@@ -1,18 +1,18 @@
 .mac {
+  @include linear-layout(row, 0);
   margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
   font-family: sans-serif;
+
   // For printing
   width: 80em;
 }
 
-.left-column {
+.left-column-holder {
+  width: 30%;
   background-color: lightcyan;
-  padding: 1em;
 }
 
-.right-column {
+.right-column-holder {
+  width: 70%;
   background-color: white;
-  padding: 1em;
 }

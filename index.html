@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}"/>
   </head>
   <body class="mac">
-    <div class="left-column">{% include left-column.html mac=mac %}</div>
-    <div class="right-column">{% include right-column.html mac=mac %}</div>
+    <div class="left-column-holder">
+      <div class="left-column">{% include left-column.html mac=mac %}</div>
+    </div>
+    <div class="right-column-holder">
+      <div class="right-column">{% include right-column.html mac=mac %}</div>
+    </div>
   </body>
 </html>

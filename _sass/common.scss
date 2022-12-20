@@ -1,17 +1,15 @@
 .common__skills {
+  // Requires flex to use flex-wrap
+  display: block;
   max-width: 40em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
 
   .common__skill {
+    display: inline-block;
     height: fit-content;
     background-color: aqua;
     border-radius: 0.5em;
     padding: 0.25em;
     margin: 0.25em;
-    display: inline;
   }
 }
 
@@ -23,14 +21,10 @@
 }
 
 .common__roles {
-  display: flex;
-  flex-direction: column;
-  gap: 3em;
+  @include linear-layout(column, 3em);
 
   .common__role {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
+    @include linear-layout(column, 0.5em);
 
     .common__role-dates {
       font-weight: 700;
@@ -46,9 +40,7 @@
     }
 
     .common__role-challenges {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5em;
+      @include linear-layout(column, 0.5em);
 
       .common__role-challenge {
         p:first-child {

@@ -20,7 +20,7 @@
   {% if profile.location %}
     <div class="left-column__location">
       <img src="{{ "/assets/images/location-icon.svg" | relative_url }}" alt="Location">
-      {{profile.location.municipality}}, {{profile.location.country}}
+      <span>{{profile.location.municipality}}, {{profile.location.country}}</span>
     </div>
   {% endif %}
 

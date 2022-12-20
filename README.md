@@ -6,6 +6,12 @@ The MAC format is defined here: <https://github.com/getmanfred/mac>
 
 You can edit and synchronize your MAC files with the Manfred app: <https://getmanfred.com>
 
+## Local development
+
+You can run the page locally with docker, with `docker-compose up`.
+
+It's published at `http://localhost:4000/`, and the page is rebuilt every time a file is changed.
+
 ## Action
 
 The action works by building your MAC repository and publishing it to GitHub Pages, in a `gh-pages` branch. This branch shouldn't be modified, as anything there will be lost on deploy.

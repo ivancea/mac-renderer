@@ -1,8 +1,6 @@
 .right-column {
+  @include linear-layout(column, 2em);
   padding: 3em;
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
 
   .right-column__section {
     .right-column__section-title {
@@ -22,9 +20,7 @@
   }
 
   .right-column__jobs {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+    @include linear-layout(column, 2em);
 
     // If this changes, the default icon must be change too
     $color: darkslateblue;
@@ -34,6 +30,8 @@
     padding-left: 2em;
 
     .right-column__job {
+      break-inside: avoid;
+
       // Show a circle in the left border
       &::before {
         content: "";
@@ -48,17 +46,12 @@
       }
 
       .right-column__job-organization {
-        // Set margin here as parent can't be flex because of pseudo-element
+        @include linear-layout(column, 1em);
+        // Set margin here as parent can't use gap because of pseudo-element
         margin-bottom: 1em;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
 
         .right-column__job-organization-title {
-          display: flex;
-          flex-direction: row;
-          gap: 1.5em;
-          align-items: center;
+          @include linear-layout(row, 1.5em, $center: true);
 
           .right-column__job-organization-image {
             width: 4em;
@@ -73,6 +66,7 @@
         }
 
         .right-column__job-organization-url {
+          display: block;
           font-size: 0.8em;
           text-decoration: none;
           color: #55a;
@@ -88,9 +82,7 @@
   }
 
   .right-column__projects {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+    @include linear-layout(column, 2em);
 
     // If this changes, the default icon must be change too
     $color: darkviolet;
@@ -100,6 +92,8 @@
     padding-left: 2em;
 
     .right-column__project {
+      break-inside: avoid;
+
       // Show a circle in the left border
       &::before {
         content: "";
@@ -114,12 +108,9 @@
       }
 
       .right-column__project-title {
-        // Set margin here as parent can't be flex because of pseudo-element
+        @include linear-layout(row, 1.5em, $center: true);
+        // Set margin here as parent can't use gap because of pseudo-element
         margin-bottom: 1em;
-        display: flex;
-        flex-direction: row;
-        gap: 1.5em;
-        align-items: center;
 
         .right-column__project-title-image {
           width: 4em;
@@ -134,7 +125,7 @@
       }
 
       .right-column__project-details {
-        // Set margin here as parent can't be flex because of pseudo-element
+        // Set margin here as parent can't use gap because of pseudo-element
         margin-bottom: 1em;
 
         .right-column__project-details-url {
@@ -158,9 +149,7 @@
   }
 
   .right-column__highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+    @include linear-layout(column, 2em);
 
     // If this changes, the default icon must be change too
     $color: coral;
@@ -170,6 +159,8 @@
     padding-left: 2em;
 
     .right-column__highlight {
+      break-inside: avoid;
+
       // Show a circle in the left border
       &::before {
         content: "";
@@ -184,12 +175,9 @@
       }
 
       .right-column__highlight-title {
-        // Set margin here as parent can't be flex because of pseudo-element
+        @include linear-layout(row, 1.5em, $center: true);
+        // Set margin here as parent can't use gap because of pseudo-element
         margin-bottom: 1em;
-        display: flex;
-        flex-direction: row;
-        gap: 1.5em;
-        align-items: center;
 
         .right-column__highlight-title-image {
           width: 4em;
@@ -204,7 +192,7 @@
       }
 
       .right-column__highlight-details {
-        // Set margin here as parent can't be flex because of pseudo-element
+        // Set margin here as parent can't use gap because of pseudo-element
         margin-bottom: 1em;
 
         .right-column__highlight-details-url {
@@ -226,7 +214,7 @@
       }
 
       .right-column__highlight-date {
-        // Set margin here as parent can't be flex because of pseudo-element
+        // Set margin here as parent can't use gap because of pseudo-element
         margin-bottom: 1em;
         font-weight: 700;
         color: #555;
@@ -235,9 +223,7 @@
   }
 
   .right-column__skills {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+    @include linear-layout(column, 1em);
 
     .right-column__skill-group {
       .right-column__skill-group-level {
