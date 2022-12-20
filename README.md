@@ -6,6 +6,8 @@ The MAC format is defined here: <https://github.com/getmanfred/mac>
 
 You can edit and synchronize your MAC files with the Manfred app: <https://getmanfred.com>
 
+The resulting HTML is printable using the browser's print function, as it will avoid breaking blocks (Jobs, projects, highlights).
+
 ## Local development
 
 You can run the page locally with docker, with `docker-compose up`.
