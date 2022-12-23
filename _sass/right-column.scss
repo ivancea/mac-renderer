@@ -1,6 +1,7 @@
 .right-column {
   @include linear-layout(column, 2em);
   padding: 3em;
+  padding-top: 5em;
 
   .right-column__section {
     .right-column__section-title {
