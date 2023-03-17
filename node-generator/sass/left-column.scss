@@ -1,0 +1,85 @@
+@import "core";
+
+.left-column {
+  @include linear-layout(column, 2em);
+  padding: 1em;
+  padding-top: 5em;
+
+  .left-column__image-holder {
+    text-align: center;
+
+    .left-column__image {
+      width: 15em;
+      height: 15em;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .left-column__name,
+  .left-column__surnames {
+    font-size: 2em;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .left-column__contact {
+    @include linear-layout(column, 1em);
+    padding-right: 2em;
+    padding-left: 2em;
+
+    img {
+      width: 1.5em !important;
+      height: 1.5em !important;
+      object-fit: cover;
+      path {
+        fill: currentColor;
+      }
+    }
+
+    .left-column__location {
+      @include linear-layout(row, 0.5em, $center: true);
+      margin-bottom: 1em;
+    }
+
+    .left-column__contact-item-link {
+      @include linear-layout(row, 0.5em, $center: true);
+      text-decoration: none;
+
+      span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .left-column__languages {
+    @include linear-layout(column, 1em);
+    padding-right: 2em;
+    padding-left: 2em;
+
+    .left-column__languages-title {
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    .left-column__language-groups {
+      @include linear-layout(column, 1em);
+      padding-left: 1em;
+
+      .left-column__language-group {
+        @include linear-layout(column, 0.5em);
+
+        .left-column__language-level {
+          font-size: 1.2em;
+          font-weight: 500;
+        }
+
+        .left-column__language {
+          padding-left: 1em;
+        }
+      }
+    }
+  }
+}

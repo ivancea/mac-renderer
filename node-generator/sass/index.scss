@@ -1,0 +1,27 @@
+@import "core";
+
+.mac {
+  @include linear-layout(row, 0);
+  margin: 0;
+  font-family: sans-serif;
+  max-width: 80em;
+
+  @media print {
+    width: 80em;
+  }
+}
+
+.left-column-holder {
+  width: 30%;
+  background-color: lightcyan;
+}
+
+.right-column-holder {
+  width: 70%;
+  background-color: white;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}

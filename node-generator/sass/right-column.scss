@@ -1,0 +1,239 @@
+@import "core";
+
+.right-column {
+  @include linear-layout(column, 2em);
+  padding: 3em;
+  padding-top: 5em;
+
+  .right-column__section {
+    .right-column__section-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 1em;
+      break-after: avoid;
+    }
+
+    .right-column__section-content {
+      padding-left: 1em;
+    }
+  }
+
+  .right-column__about-me {
+    font-size: 1.2em;
+  }
+
+  .right-column__jobs {
+    @include linear-layout(column, 2em);
+
+    // If this changes, the default icon must be change too
+    $color: darkslateblue;
+
+    // For the left bar
+    border-left: 0.15em solid $color;
+    padding-left: 2em;
+
+    .right-column__job {
+      break-inside: avoid;
+
+      // Show a circle in the left border
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: $color;
+        position: relative;
+        top: 2.5em;
+        left: -2.6em;
+      }
+
+      .right-column__job-organization {
+        @include linear-layout(column, 1em);
+        // Set margin here as parent can't use gap because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__job-organization-title {
+          @include linear-layout(row, 1.5em, $center: true);
+
+          .right-column__job-organization-image {
+            width: 4em;
+            height: 4em;
+            object-fit: contain;
+          }
+
+          .right-column__job-organization-name {
+            font-size: 1.5em;
+            font-weight: 600;
+          }
+        }
+
+        .right-column__job-organization-url {
+          display: block;
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #55a;
+
+          .right-column__job-organization-url-icon {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+
+  .right-column__projects {
+    @include linear-layout(column, 2em);
+
+    // If this changes, the default icon must be change too
+    $color: darkviolet;
+
+    // For the left bar
+    border-left: 0.15em solid $color;
+    padding-left: 2em;
+
+    .right-column__project {
+      break-inside: avoid;
+
+      // Show a circle in the left border
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: $color;
+        position: relative;
+        top: 2.5em;
+        left: -2.6em;
+      }
+
+      .right-column__project-title {
+        @include linear-layout(row, 1.5em, $center: true);
+        // Set margin here as parent can't use gap because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__project-title-image {
+          width: 4em;
+          height: 4em;
+          object-fit: contain;
+        }
+
+        .right-column__project-title-name {
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+      }
+
+      .right-column__project-details {
+        // Set margin here as parent can't use gap because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__project-details-url {
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #55a;
+
+          .right-column__project-details-url-icon {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+          }
+        }
+
+        .right-column__project-details-description {
+          border-left: 0.15em dotted $color;
+          padding-left: 1em;
+        }
+      }
+    }
+  }
+
+  .right-column__highlights {
+    @include linear-layout(column, 2em);
+
+    // If this changes, the default icon must be change too
+    $color: coral;
+
+    // For the left bar
+    border-left: 0.15em solid $color;
+    padding-left: 2em;
+
+    .right-column__highlight {
+      break-inside: avoid;
+
+      // Show a circle in the left border
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: $color;
+        position: relative;
+        top: 2.5em;
+        left: -2.6em;
+      }
+
+      .right-column__highlight-title {
+        @include linear-layout(row, 1.5em, $center: true);
+        // Set margin here as parent can't use gap because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__highlight-title-image {
+          width: 4em;
+          height: 4em;
+          object-fit: contain;
+        }
+
+        .right-column__highlight-title-name {
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+      }
+
+      .right-column__highlight-details {
+        // Set margin here as parent can't use gap because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__highlight-details-url {
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #55a;
+
+          .right-column__highlight-details-url-icon {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+          }
+        }
+
+        .right-column__highlight-details-description {
+          border-left: 0.15em dotted $color;
+          padding-left: 1em;
+        }
+      }
+
+      .right-column__highlight-date {
+        // Set margin here as parent can't use gap because of pseudo-element
+        margin-bottom: 1em;
+        font-weight: 700;
+        color: #555;
+      }
+    }
+  }
+
+  .right-column__skills {
+    @include linear-layout(column, 1em);
+
+    .right-column__skill-group {
+      .right-column__skill-group-level {
+        font-size: 1.2em;
+        font-weight: 600;
+      }
+    }
+  }
+}
