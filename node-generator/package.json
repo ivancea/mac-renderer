@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "start": "npm run generate && ts-node example.ts",
-    "build": "rimraf ./build && npm run generate && tsc -p tsconfig.build.json && copyfiles ./generated/styles/styles.css ./build",
+    "start": "ts-node example.ts",
+    "build": "rimraf ./build && npm run generate && tsc -p tsconfig.build.json && copyfiles ./generated/** ./build",
     "generate": "npm run generate-schema && npm run generate-sass",
     "generate-schema": "json2ts mac-schema.json generated/mac.d.ts --no-additionalProperties",
-    "generate-sass": "rimraf ./generated/styles && sass --style=compressed ./sass:./generated/styles",
+    "generate-sass": "sass --style=compressed --no-source-map ./sass:./generated/styles && copyfiles --flat ./generated/styles/styles.css ./generated && rimraf ./generated/styles",
     "format": "prettier ./**/* --write",
     "lint": "eslint ./"
   },

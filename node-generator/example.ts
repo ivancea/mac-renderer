@@ -808,6 +808,4 @@ const example = {
   },
 } satisfies ManfredAwesomicCV;
 
-const html = generateHtml(example);
-
-console.log(html);
+generateHtml(example).then(html => console.log(html));
