@@ -1,10 +1,6 @@
 # Jekyll MAC renderer
 
-{% note %}
-
-To configure this action in your repository, see the [How to use](#how-to-use) section below.
-
-{% endnote %}
+*To configure this action in your repository, see the [How to use](#how-to-use) section below.*
 
 
 A MAC JSON renderer and action made in Jekyll, for GitHub Pages. An example of the page can be seen here: <https://ivancea.github.io/jekyll-mac-renderer/>
