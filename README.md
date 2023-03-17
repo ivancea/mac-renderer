@@ -34,15 +34,17 @@ The action works by building your MAC repository and publishing it to GitHub Pag
 First, grant permission to actions in your repository to read and write to it.
 For that, go to `Settings` > `Actions` > `General`, and in the `Workflow permissions` section, select `Read and write permissions`.
 
-Then, create a workflow in `.github/workflows/deploy.yml` with this content:
+Then, create a workflow in `.github/workflows/deploy.yml` with this content (Replace the branch name you want to use):
 
 ```yaml
 name: Deploy to GitHub Pages
 
 on:
+  # Automatic build on push, choose the branch you want to use here
   push:
-    branches: "master" # Automatic build on master changes
-  workflow_dispatch: # If you want to be able to build it manually from any branch
+    branches: "master"
+  # If you want to be able to build it manually from any branch
+  workflow_dispatch: 
 
 jobs:
   deploy:
