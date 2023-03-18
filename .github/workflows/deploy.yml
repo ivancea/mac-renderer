@@ -1,0 +1,14 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./action.yml
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
