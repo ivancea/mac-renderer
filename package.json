@@ -1,6 +1,12 @@
 {
+  "name": "mac-renderer",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "./build/index.js",
+  "bin": "./build/cli.js",
   "scripts": {
-    "build": "rimraf ./build && npm run generate && tsc -p tsconfig.build.json && copyfiles ./{generated,images}/** ./build",
+    "build": "rimraf ./build && npm run generate && tsc -p tsconfig.build.json && npm run copy-files",
+    "copy-files": "copyfiles ./{generated,images}/** ./build && copyfiles ./mac-schema.json ./build",
     "generate": "npm run generate-schema && npm run generate-sass",
     "generate-schema": "json2ts mac-schema.json generated/mac.d.ts --no-additionalProperties && replace-in-file \"/\\[k: string\\]: unknown;/g\" \"\" generated/mac.d.ts --isRegex",
     "generate-sass": "sass --style=compressed --no-source-map ./sass:./generated/styles && copyfiles --flat ./generated/styles/styles.css ./generated && rimraf ./generated/styles",
@@ -22,7 +28,9 @@
     "typescript": "5.0.2"
   },
   "dependencies": {
+    "commander": "10.0.0",
     "escape-html": "1.0.3",
+    "jsonschema": "1.4.1",
     "marked": "4.2.12"
   }
 }

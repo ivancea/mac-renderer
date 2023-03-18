@@ -10,11 +10,9 @@ You can edit and synchronize your MAC files with the Manfred app: <https://getma
 
 The resulting HTML is printable using the browser's print function, as it will avoid breaking blocks (Jobs, projects, highlights).
 
-## Local development
+## CLI
 
-You can run the page locally with docker, with `docker-compose up`.
-
-It's published at `http://localhost:4000/`, and the page is rebuilt every time a file is changed.
+Use it with `npx mac-renderer <input-file>`.
 
 ## Action
 
