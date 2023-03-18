@@ -1,9 +1,8 @@
-# Jekyll MAC renderer
+# MAC renderer
 
-*To configure this action in your repository, see the [How to use](#how-to-use) section below.*
+_To configure this action in your repository, see the [How to use](#how-to-use) section below._
 
-
-A MAC JSON renderer and action made in Jekyll, for GitHub Pages. An example of the page can be seen here: <https://ivancea.github.io/jekyll-mac-renderer/>
+A MAC JSON renderer and action made in JS, with an action for GitHub Pages. An example of the page can be seen here: <https://ivancea.github.io/mac-renderer/>
 
 The MAC format is defined here: <https://github.com/getmanfred/mac>
 
@@ -40,13 +39,13 @@ on:
   push:
     branches: "master"
   # If you want to be able to build it manually from any branch
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: ivancea/jekyll-mac-renderer@v1 # Change this to the latest version
+      - uses: ivancea/mac-renderer@v1 # Change this to the latest version
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -54,7 +53,7 @@ jobs:
 This will execute the build of the page every time you push to master, or when you manually trigger the workflow.
 
 The build will upload the built page to the `gh-pages` branch, or to the branch you've already configured to be used for GitHub Pages.
-*You can check <https://github.com/helaili/jekyll-action> to see the exact logic, as that action is used underneath.*
+_You can check <https://github.com/helaili/jekyll-action> to see the exact logic, as that action is used underneath._
 
 If you haven't configured yet your GitHub Pages, go to the repository `Settings`, and in the `Pages` tab, choose `Deploy from a branch` in `Source` and select the `gh-pages` branch. This will enable the site, and launch another action to publish the branch every time it changes.
 
@@ -62,7 +61,7 @@ After that, the GitHub page with your CV will be available at `https://<username
 
 ### Customization
 
-The action will merge its files  with yours in a temporary directory.
+The action will merge its files with yours in a temporary directory.
 Existent files won't be overridden, so you can copy this repository files and customize/override them.
 
 Remember that, if you change the version of the action, files may change again.
