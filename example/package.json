@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "dependencies": {
+    "mac-renderer": "../"
+  },
+  "devDependencies": {
+    "ts-node": "10.9.1"
+  }
+}

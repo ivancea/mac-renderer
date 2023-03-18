@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "start": "ts-node example.ts",
     "build": "rimraf ./build && npm run generate && tsc -p tsconfig.build.json && copyfiles ./{generated,images}/** ./build",
     "generate": "npm run generate-schema && npm run generate-sass",
     "generate-schema": "json2ts mac-schema.json generated/mac.d.ts --no-additionalProperties && replace-in-file \"/\\[k: string\\]: unknown;/g\" \"\" generated/mac.d.ts --isRegex",
@@ -15,12 +14,11 @@
     "copyfiles": "2.4.1",
     "eslint": "8.36.0",
     "json-schema-to-typescript": "12.0.0",
-    "prettier": "^2.8.4",
-    "prettier-plugin-organize-imports": "^3.2.2",
-    "replace-in-file": "^6.3.5",
+    "prettier": "2.8.4",
+    "prettier-plugin-organize-imports": "3.2.2",
+    "replace-in-file": "6.3.5",
     "rimraf": "4.4.0",
     "sass": "1.59.3",
-    "ts-node": "10.9.1",
     "typescript": "5.0.2"
   },
   "dependencies": {
