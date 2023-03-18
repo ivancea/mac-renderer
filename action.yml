@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Check that the repository is correct
       shell: bash
       run: |
@@ -15,17 +15,24 @@ runs:
           echo "CV/MAC.json does not exist"
           exit 1
         fi
-    - name: Copy Jekyll action files
+    - name: Copy MAC to action directory
       shell: bash
       run: |
-        rsync --recursive --ignore-existing ${{ github.action_path }}/ .
-    - uses: actions/cache@v2
+        rsync --recursive --ignore-existing CV ${{ github.action_path }}/
+    - uses: actions/setup-node@v3
       with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
-    - uses: helaili/jekyll-action@2.4.0
+        node-version: 16
+    - run: npm run build
+      working-directory: ${{ github.action_path }}
+    - run: npx mac-renderer CV/MAC.json > page/index.html
+      working-directory: ${{ github.action_path }}
+    - name: Create .nojekyll file
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      run: |
+        touch ./page/.nojekyll
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        token: ${{ inputs.github-token }}
-        jekyll_build_options: --baseurl ${{ github.event.repository.name }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ${{ github.action_path }}/page
