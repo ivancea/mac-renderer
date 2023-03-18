@@ -9,6 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./action.yml
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
