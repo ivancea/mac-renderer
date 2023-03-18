@@ -594,9 +594,7 @@
             "type": "technology"
           }
         ],
-        "tags": [
-          "Contest"
-        ]
+        "tags": ["Contest"]
       },
       {
         "details": {
@@ -612,9 +610,7 @@
             "type": "technology"
           }
         ],
-        "tags": [
-          "Contest"
-        ]
+        "tags": ["Contest"]
       }
     ]
   },
