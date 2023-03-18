@@ -1,5 +1,6 @@
 import { ManfredAwesomicCV } from "./generated/mac";
-import { generateHtml } from "./lib/generator";
+import { generateHtml } from ".";
+import { promises as fs } from "fs";
 
 const example = {
   $schema:
@@ -808,4 +809,4 @@ const example = {
   },
 } satisfies ManfredAwesomicCV;
 
-generateHtml(example).then(html => console.log(html));
+generateHtml(example).then((html) => fs.writeFile("example.html", html));

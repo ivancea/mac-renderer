@@ -1,0 +1,96 @@
+import { ManfredAwesomicCV } from "../../generated/mac";
+import { generatorFrom } from "./utils";
+
+export const generateLeftColumn = generatorFrom(async function* (
+  mac: ManfredAwesomicCV
+) {
+  const profile = mac.aboutMe.profile;
+
+  yield `
+    {% if profile.avatar.link %}
+        <div class="left-column__image-holder">
+        <img src="{{ profile.avatar.link }}" alt="{{ profile.avatar.alt }}" class="left-column__image">
+        </div>
+    {% endif %}
+    
+    <div>
+        <div class="left-column__name">
+        {{profile.name}}
+        </div>
+        <div class="left-column__surnames">
+        {{profile.surnames}}
+        </div>
+    </div>
+    
+    <div class="left-column__contact">
+        {% if profile.location %}
+        <div class="left-column__location">
+            <img src="{{ "/assets/images/location-icon.svg" | relative_url }}" alt="Location">
+            <span>{{profile.location.municipality}}, {{profile.location.country}}</span>
+        </div>
+        {% endif %}
+    
+        {% if mac.aboutMe.relevantLinks %}
+        <!-- First, the public contact links -->
+        {% if mac.careerPreferences.contact.publicProfiles %}
+            {% assign public_profile_links = mac.careerPreferences.contact.publicProfiles %}
+    
+            {% for link in public_profile_links %}
+            {% include left-column/contact-item.html link=link %}
+            {% endfor %}
+        {% else %}
+            {% assign public_profile_links = "" | split: '' %}
+        {% endif %}
+    
+        <!-- Filter relevant links that aren't contact ones -->
+        {% assign public_profile_urls = public_profile_links | map: "URL" %}
+        {% assign non_contact_links = "" | split: '' %}
+        {% for link in mac.aboutMe.relevantLinks %}
+            {% unless public_profile_urls contains link.URL %}
+            {% assign non_contact_links = non_contact_links | push: link %}
+            {% endunless %}
+        {% endfor %}
+    
+        <!-- Second, the known links -->
+        {% assign links = non_contact_links | where_exp: "link", "link.type != 'other'" %}
+        {% for link in links %}
+            {% include left-column/contact-item.html link=link %}
+        {% endfor %}
+    
+        <!-- Then, others -->
+        {% assign links = non_contact_links | where: "type", "other" %}
+        {% for link in links %}
+            {% include left-column/contact-item.html link=link %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    
+    {% if mac.knowledge.languages %}
+        <div class="left-column__languages">
+        <div class="left-column__languages-title">
+            Languages
+        </div>
+    
+        <div class="left-column__language-groups">
+            {% assign languages = mac.knowledge.languages | where_exp: "language", "language.level == nil" | map: "name" %}
+            {% include left-column/language-group.html level="" languages=languages %}
+    
+            {% assign languages = mac.knowledge.languages | where: "level", "Native or bilingual proficiency" | map: "name" %}
+            {% include left-column/language-group.html level="Native or bilingual proficiency" languages=languages %}
+    
+            {% assign languages = mac.knowledge.languages | where: "level", "Full professional proficiency" | map: "name" %}
+            {% include left-column/language-group.html level="Full professional proficiency" languages=languages %}
+    
+            {% assign languages = mac.knowledge.languages | where: "level", "Professional working proficiency" | map: "name" %}
+            {% include left-column/language-group.html level="Professional working proficiency" languages=languages %}
+    
+            {% assign languages = mac.knowledge.languages | where: "level", "Limited working proficiency" | map: "name" %}
+            {% include left-column/language-group.html level="Limited working proficiency" languages=languages %}
+    
+            {% assign languages = mac.knowledge.languages | where: "level", "Elementary proficiency" | map: "name" %}
+            {% include left-column/language-group.html level="Elementary proficiency" languages=languages %}
+        </div>
+        </div>
+    {% endif %}
+  `;
+});
