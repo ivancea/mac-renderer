@@ -31,7 +31,9 @@ runs:
     - name: Generate HTML
       shell: bash
       working-directory: ${{ github.action_path }}
-      run: npx mac-renderer CV/MAC.json > page/index.html
+      run: |
+        mkdir page
+        npx mac-renderer CV/MAC.json > page/index.html
     - name: Create .nojekyll file
       shell: bash
       working-directory: ${{ github.action_path }}
