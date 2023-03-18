@@ -1,9 +1,7 @@
 import { ManfredAwesomicCV } from "../../generated/mac";
-import { generatorFrom } from "./utils";
+import { generatorFrom } from "../utils";
 
-export const generateRightColumn = generatorFrom(async function* (
-  mac: ManfredAwesomicCV
-) {
+export const generateRightColumn = generatorFrom(async function* (mac: ManfredAwesomicCV) {
   yield `
     <html>
   `;

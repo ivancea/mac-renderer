@@ -1,10 +1,9 @@
 import { ManfredAwesomicCV } from "./generated/mac";
-import { generateHtml } from ".";
+import { generateHtml } from "./index";
 import { promises as fs } from "fs";
 
 const example = {
-  $schema:
-    "https://raw.githubusercontent.com/getmanfred/mac/v0.3/schema/schema.json",
+  $schema: "https://raw.githubusercontent.com/getmanfred/mac/v0.3/schema/schema.json",
   settings: {
     language: "ES",
     MACVersion: "0.3",
@@ -104,8 +103,7 @@ const example = {
             finishDate: "2022-05-01",
             challenges: [
               {
-                description:
-                  "Helping with a service integration with GitHub using a GitHub App.",
+                description: "Helping with a service integration with GitHub using a GitHub App.",
               },
             ],
             competences: [
@@ -604,8 +602,7 @@ const example = {
       {
         details: {
           name: "Tuenti Challenge 8: 2nd place",
-          description:
-            "Programming and networking anual contest hosted by Tuenti.",
+          description: "Programming and networking anual contest hosted by Tuenti.",
           URL: "https://medium.com/makingtuenti/we-made-the-impossible-possible-in-the-tuenti-challenge-8-edition-619df6d56381",
           image: {
             alt: "tuenti-300x300.png",

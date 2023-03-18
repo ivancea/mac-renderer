@@ -704,13 +704,7 @@
                 "properties": {
                   "type": {
                     "type": "string",
-                    "enum": [
-                      "manfred",
-                      "linkedin",
-                      "stackoverflow",
-                      "xing",
-                      "other"
-                    ],
+                    "enum": ["manfred", "linkedin", "stackoverflow", "xing", "other"],
                     "$comment": "TBD Refactor to extract the enumeration \"public link type\" to a common definition file, to be completed with more external services."
                   },
                   "URL": {
@@ -974,17 +968,11 @@
         },
         "address": {
           "type": "string",
-          "examples": [
-            "",
-            "33 West 23rd Street, 2nd Floor",
-            "Rua Emilia Pardo Bazán 18, 6ºB"
-          ]
+          "examples": ["", "33 West 23rd Street, 2nd Floor", "Rua Emilia Pardo Bazán 18, 6ºB"]
         },
         "notes": {
           "type": "string",
-          "examples": [
-            "Please, use the security code '6535' to get access to the mail boxes."
-          ]
+          "examples": ["Please, use the security code '6535' to get access to the mail boxes."]
         }
       },
       "additionalProperties": false
@@ -995,11 +983,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "examples": [
-            "Stanford University",
-            "IBM",
-            "Project Management Institute"
-          ]
+          "examples": ["Stanford University", "IBM", "Project Management Institute"]
         },
         "description": {
           "type": "string"
@@ -1037,13 +1021,7 @@
     "projectType": {
       "type": "string",
       "description": "Types of Projects",
-      "enum": [
-        "proBono",
-        "openSource",
-        "sideProject",
-        "personalAchievement",
-        "other"
-      ]
+      "enum": ["proBono", "openSource", "sideProject", "personalAchievement", "other"]
     },
     "publicArtifactType": {
       "type": "string",
@@ -1073,12 +1051,7 @@
     "studyType": {
       "type": "string",
       "description": "Types of studies:\n\n* \"officialDegree\" is a degree accredited by the government (University Degree) or an external, recognized and independent agency (some MBAs).\n* \"certification\" is a degree accredited by a private institution (eg. Oracle Database Admin Certification or Projecr Management Institute PMP)\n* \"unaccredited\" is a course without any accreditation (eg. Coursera or Platzi courses), but this doesn't mean that is not valid, legit, or has poor quality\n* \"selfTraining\" is the study designed, managed and evaluated just by the own learner.",
-      "enum": [
-        "officialDegree",
-        "certification",
-        "unaccredited",
-        "selfTraining"
-      ]
+      "enum": ["officialDegree", "certification", "unaccredited", "selfTraining"]
     }
   }
 }

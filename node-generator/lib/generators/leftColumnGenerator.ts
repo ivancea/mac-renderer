@@ -1,36 +1,45 @@
 import { ManfredAwesomicCV } from "../../generated/mac";
-import { generatorFrom } from "./utils";
+import { assets } from "../assets";
+import { generatorFrom } from "../utils";
 
-export const generateLeftColumn = generatorFrom(async function* (
-  mac: ManfredAwesomicCV
-) {
+export const generateLeftColumn = generatorFrom(async function* (mac: ManfredAwesomicCV) {
   const profile = mac.aboutMe.profile;
 
+  if (profile.avatar?.link) {
+    yield `
+      <div class="left-column__image-holder">
+        <img src="${profile.avatar.link}" alt="${profile.avatar.alt}" class="left-column__image">
+      </div>
+    `;
+  }
+
   yield `
-    {% if profile.avatar.link %}
-        <div class="left-column__image-holder">
-        <img src="{{ profile.avatar.link }}" alt="{{ profile.avatar.alt }}" class="left-column__image">
-        </div>
-    {% endif %}
-    
     <div>
-        <div class="left-column__name">
-        {{profile.name}}
-        </div>
-        <div class="left-column__surnames">
-        {{profile.surnames}}
-        </div>
+      <div class="left-column__name">
+        ${profile.name}
+      </div>
+      <div class="left-column__surnames">
+        ${profile.surnames}
+      </div>
     </div>
-    
+  `;
+
+  yield `
     <div class="left-column__contact">
-        {% if profile.location %}
-        <div class="left-column__location">
-            <img src="{{ "/assets/images/location-icon.svg" | relative_url }}" alt="Location">
-            <span>{{profile.location.municipality}}, {{profile.location.country}}</span>
-        </div>
-        {% endif %}
-    
-        {% if mac.aboutMe.relevantLinks %}
+  `;
+
+  if (profile.location) {
+    yield `
+      <div class="left-column__location">
+        <img src="${await assets.locationIcon}" alt="Location">
+        <span>${profile.location.municipality}, ${profile.location.country}</span>
+      </div>
+    `;
+  }
+
+  // Links
+  if (mac.aboutMe.relevantLinks?.length) {
+    yield `
         <!-- First, the public contact links -->
         {% if mac.careerPreferences.contact.publicProfiles %}
             {% assign public_profile_links = mac.careerPreferences.contact.publicProfiles %}
@@ -62,11 +71,16 @@ export const generateLeftColumn = generatorFrom(async function* (
         {% for link in links %}
             {% include left-column/contact-item.html link=link %}
         {% endfor %}
-        {% endif %}
+    `;
+  }
+
+  yield `
     </div>
-    
-    {% if mac.knowledge.languages %}
-        <div class="left-column__languages">
+  `;
+
+  if (mac?.knowledge?.languages) {
+    yield `
+      <div class="left-column__languages">
         <div class="left-column__languages-title">
             Languages
         </div>
@@ -90,7 +104,7 @@ export const generateLeftColumn = generatorFrom(async function* (
             {% assign languages = mac.knowledge.languages | where: "level", "Elementary proficiency" | map: "name" %}
             {% include left-column/language-group.html level="Elementary proficiency" languages=languages %}
         </div>
-        </div>
-    {% endif %}
-  `;
+      </div>
+    `;
+  }
 });
