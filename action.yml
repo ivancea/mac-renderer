@@ -41,9 +41,8 @@ runs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
-        working-directory: ${{ github.action_path }}
-      with:
         path: "./page"
+        working-directory: ${{ github.action_path }}
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v1
