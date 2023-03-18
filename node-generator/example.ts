@@ -1,6 +1,6 @@
+import { promises as fs } from "fs";
 import { ManfredAwesomicCV } from "./generated/mac";
 import { generateHtml } from "./index";
-import { promises as fs } from "fs";
 
 const example = {
   $schema: "https://raw.githubusercontent.com/getmanfred/mac/v0.3/schema/schema.json",
@@ -804,6 +804,6 @@ const example = {
       },
     ],
   },
-} satisfies ManfredAwesomicCV;
+} as unknown as ManfredAwesomicCV;
 
 generateHtml(example).then((html) => fs.writeFile("example.html", html));

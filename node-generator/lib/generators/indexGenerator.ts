@@ -1,9 +1,9 @@
-import { ManfredAwesomicCV } from "../../generated/mac";
 import { promises as fs } from "fs";
 import path from "path";
+import { ManfredAwesomicCV } from "../../generated/mac";
+import { generatorFrom } from "../utils";
 import { generateLeftColumn } from "./leftColumnGenerator";
 import { generateRightColumn } from "./rightColumnGenerator";
-import { generatorFrom } from "../utils";
 
 /**
  * Generates HTML from a MAC object.

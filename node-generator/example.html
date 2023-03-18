@@ -30,39 +30,34 @@
         <span>La Coruña, España</span>
       </div>
     
-      {% if mac.aboutMe.relevantLinks %}
-      <!-- First, the public contact links -->
-      {% if mac.careerPreferences.contact.publicProfiles %}
-          {% assign public_profile_links = mac.careerPreferences.contact.publicProfiles %}
+    <div class="left-column__contact-item">
+      <a class="left-column__contact-item-link" href="https://www.linkedin.com/in/ivancea/" target="_blank">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgY2xhc3M9Im1lcmNhZG8tbWF0Y2giIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+CiAgICA8cGF0aCBkPSJNMjAuNSAyaC0xN0ExLjUgMS41IDAgMDAyIDMuNXYxN0ExLjUgMS41IDAgMDAzLjUgMjJoMTdhMS41IDEuNSAwIDAwMS41LTEuNXYtMTdBMS41IDEuNSAwIDAwMjAuNSAyek04IDE5SDV2LTloM3pNNi41IDguMjVBMS43NSAxLjc1IDAgMTE4LjMgNi41YTEuNzggMS43OCAwIDAxLTEuOCAxLjc1ek0xOSAxOWgtM3YtNC43NGMwLTEuNDItLjYtMS45My0xLjM4LTEuOTNBMS43NCAxLjc0IDAgMDAxMyAxNC4xOWEuNjYuNjYgMCAwMDAgLjE0VjE5aC0zdi05aDIuOXYxLjNhMy4xMSAzLjExIDAgMDEyLjctMS40YzEuNTUgMCAzLjM2Ljg2IDMuMzYgMy42NnoiPjwvcGF0aD4KPC9zdmc+" alt="LinkedIn">
+        <span>www.linkedin.com/in/ivancea/</span>
+      </a>
+    </div>
   
-          {% for link in public_profile_links %}
-          {% include left-column/contact-item.html link=link %}
-          {% endfor %}
-      {% else %}
-          {% assign public_profile_links = "" | split: '' %}
-      {% endif %}
+    <div class="left-column__contact-item">
+      <a class="left-column__contact-item-link" href="https://stackoverflow.com/users/3070545/iv%C3%A1n" target="_blank">
+      
+        <span>stackoverflow.com/users/3070545/iván</span>
+      </a>
+    </div>
   
-      <!-- Filter relevant links that aren't contact ones -->
-      {% assign public_profile_urls = public_profile_links | map: "URL" %}
-      {% assign non_contact_links = "" | split: '' %}
-      {% for link in mac.aboutMe.relevantLinks %}
-          {% unless public_profile_urls contains link.URL %}
-          {% assign non_contact_links = non_contact_links | push: link %}
-          {% endunless %}
-      {% endfor %}
+    <div class="left-column__contact-item">
+      <a class="left-column__contact-item-link" href="https://github.com/ivancea/" target="_blank">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzIiIGFyaWEtaGlkZGVuPSJ0cnVlIiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgd2lkdGg9IjMyIj4KICAgIDxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMEMzLjU4IDAgMCAzLjU4IDAgOGMwIDMuNTQgMi4yOSA2LjUzIDUuNDcgNy41OS40LjA3LjU1LS4xNy41NS0uMzggMC0uMTktLjAxLS44Mi0uMDEtMS40OS0yLjAxLjM3LTIuNTMtLjQ5LTIuNjktLjk0LS4wOS0uMjMtLjQ4LS45NC0uODItMS4xMy0uMjgtLjE1LS42OC0uNTItLjAxLS41My42My0uMDEgMS4wOC41OCAxLjIzLjgyLjcyIDEuMjEgMS44Ny44NyAyLjMzLjY2LjA3LS41Mi4yOC0uODcuNTEtMS4wNy0xLjc4LS4yLTMuNjQtLjg5LTMuNjQtMy45NSAwLS44Ny4zMS0xLjU5LjgyLTIuMTUtLjA4LS4yLS4zNi0xLjAyLjA4LTIuMTIgMCAwIC42Ny0uMjEgMi4yLjgyLjY0LS4xOCAxLjMyLS4yNyAyLS4yNy42OCAwIDEuMzYuMDkgMiAuMjcgMS41My0xLjA0IDIuMi0uODIgMi4yLS44Mi40NCAxLjEuMTYgMS45Mi4wOCAyLjEyLjUxLjU2LjgyIDEuMjcuODIgMi4xNSAwIDMuMDctMS44NyAzLjc1LTMuNjUgMy45NS4yOS4yNS41NC43My41NCAxLjQ4IDAgMS4wNy0uMDEgMS45My0uMDEgMi4yIDAgLjIxLjE1LjQ2LjU1LjM4QTguMDEzIDguMDEzIDAgMDAxNiA4YzAtNC40Mi0zLjU4LTgtOC04eiI+PC9wYXRoPgo8L3N2Zz4=" alt="GitHub">
+        <span>github.com/ivancea/</span>
+      </a>
+    </div>
   
-      <!-- Second, the known links -->
-      {% assign links = non_contact_links | where_exp: "link", "link.type != 'other'" %}
-      {% for link in links %}
-          {% include left-column/contact-item.html link=link %}
-      {% endfor %}
+    <div class="left-column__contact-item">
+      <a class="left-column__contact-item-link" href="https://twitter.com/ivancea96" target="_blank">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGQ9Ik0yNCA0LjU1N2MtLjg4My4zOTItMS44MzIuNjU2LTIuODI4Ljc3NSAxLjAxNy0uNjA5IDEuNzk4LTEuNTc0IDIuMTY1LTIuNzI0LS45NTEuNTY0LTIuMDA1Ljk3NC0zLjEyNyAxLjE5NS0uODk3LS45NTctMi4xNzgtMS41NTUtMy41OTQtMS41NTUtMy4xNzkgMC01LjUxNSAyLjk2Ni00Ljc5NyA2LjA0NS00LjA5MS0uMjA1LTcuNzE5LTIuMTY1LTEwLjE0OC01LjE0NC0xLjI5IDIuMjEzLS42NjkgNS4xMDggMS41MjMgNi41NzQtLjgwNi0uMDI2LTEuNTY2LS4yNDctMi4yMjktLjYxNi0uMDU0IDIuMjgxIDEuNTgxIDQuNDE1IDMuOTQ5IDQuODktLjY5My4xODgtMS40NTIuMjMyLTIuMjI0LjA4NC42MjYgMS45NTYgMi40NDQgMy4zNzkgNC42IDMuNDE5LTIuMDcgMS42MjMtNC42NzggMi4zNDgtNy4yOSAyLjA0IDIuMTc5IDEuMzk3IDQuNzY4IDIuMjEyIDcuNTQ4IDIuMjEyIDkuMTQyIDAgMTQuMzA3LTcuNzIxIDEzLjk5NS0xNC42NDYuOTYyLS42OTUgMS43OTctMS41NjIgMi40NTctMi41NDl6Ii8+Cjwvc3ZnPg==" alt="Twitter">
+        <span>twitter.com/ivancea96</span>
+      </a>
+    </div>
   
-      <!-- Then, others -->
-      {% assign links = non_contact_links | where: "type", "other" %}
-      {% for link in links %}
-          {% include left-column/contact-item.html link=link %}
-      {% endfor %}
-      {% endif %}
     </div>
   
       <div class="left-column__languages">
@@ -71,23 +66,33 @@
         </div>
     
         <div class="left-column__language-groups">
-            {% assign languages = mac.knowledge.languages | where_exp: "language", "language.level == nil" | map: "name" %}
-            {% include left-column/language-group.html level="" languages=languages %}
     
-            {% assign languages = mac.knowledge.languages | where: "level", "Native or bilingual proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Native or bilingual proficiency" languages=languages %}
+      <div class="left-column__language-group">
+        <div class="left-column__language-level">
+    Native (C1/C2)
+      </div>
     
-            {% assign languages = mac.knowledge.languages | where: "level", "Full professional proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Full professional proficiency" languages=languages %}
+        <div class="left-column__language">
+          Galician
+        </div>
+      
+        <div class="left-column__language">
+          Spanish
+        </div>
+      
+      </div>
     
-            {% assign languages = mac.knowledge.languages | where: "level", "Professional working proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Professional working proficiency" languages=languages %}
+      <div class="left-column__language-group">
+        <div class="left-column__language-level">
+    Fluid (B2)
+      </div>
     
-            {% assign languages = mac.knowledge.languages | where: "level", "Limited working proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Limited working proficiency" languages=languages %}
+        <div class="left-column__language">
+          English
+        </div>
+      
+      </div>
     
-            {% assign languages = mac.knowledge.languages | where: "level", "Elementary proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Elementary proficiency" languages=languages %}
         </div>
       </div>
     </div>

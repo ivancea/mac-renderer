@@ -1,11 +1,13 @@
 import { ManfredAwesomicCV } from "../../generated/mac";
 import { assets } from "../assets";
 import { generatorFrom } from "../utils";
+import { generateContactItem } from "./leftColumn/contactItemGenerator";
+import { generateLanguageGroup } from "./leftColumn/languageGroupGenerator";
 
 export const generateLeftColumn = generatorFrom(async function* (mac: ManfredAwesomicCV) {
   const profile = mac.aboutMe.profile;
 
-  if (profile.avatar?.link) {
+  if (profile.avatar && "link" in profile.avatar) {
     yield `
       <div class="left-column__image-holder">
         <img src="${profile.avatar.link}" alt="${profile.avatar.alt}" class="left-column__image">
@@ -39,46 +41,45 @@ export const generateLeftColumn = generatorFrom(async function* (mac: ManfredAwe
 
   // Links
   if (mac.aboutMe.relevantLinks?.length) {
-    yield `
-        <!-- First, the public contact links -->
-        {% if mac.careerPreferences.contact.publicProfiles %}
-            {% assign public_profile_links = mac.careerPreferences.contact.publicProfiles %}
-    
-            {% for link in public_profile_links %}
-            {% include left-column/contact-item.html link=link %}
-            {% endfor %}
-        {% else %}
-            {% assign public_profile_links = "" | split: '' %}
-        {% endif %}
-    
-        <!-- Filter relevant links that aren't contact ones -->
-        {% assign public_profile_urls = public_profile_links | map: "URL" %}
-        {% assign non_contact_links = "" | split: '' %}
-        {% for link in mac.aboutMe.relevantLinks %}
-            {% unless public_profile_urls contains link.URL %}
-            {% assign non_contact_links = non_contact_links | push: link %}
-            {% endunless %}
-        {% endfor %}
-    
-        <!-- Second, the known links -->
-        {% assign links = non_contact_links | where_exp: "link", "link.type != 'other'" %}
-        {% for link in links %}
-            {% include left-column/contact-item.html link=link %}
-        {% endfor %}
-    
-        <!-- Then, others -->
-        {% assign links = non_contact_links | where: "type", "other" %}
-        {% for link in links %}
-            {% include left-column/contact-item.html link=link %}
-        {% endfor %}
-    `;
+    // First, the public contact links
+    const contact = mac.careerPreferences?.contact;
+
+    const publicProfileLinks =
+      (contact && "publicProfiles" in contact && contact?.publicProfiles) || [];
+
+    if (publicProfileLinks.length) {
+      for (const link of publicProfileLinks) {
+        yield await generateContactItem(link);
+      }
+    }
+
+    // Filter relevant links that aren't contact ones
+    const publicProfileUrls = publicProfileLinks.map((link) => link.URL);
+
+    const nonContactLinks =
+      mac.aboutMe.relevantLinks?.filter((link) => !publicProfileUrls.includes(link.URL)) ?? [];
+
+    // Second, the known links
+    const knownLinks = nonContactLinks.filter((link) => link.type !== "other");
+
+    for (const link of knownLinks) {
+      yield await generateContactItem(link);
+    }
+
+    // Then, others
+    const otherLinks = nonContactLinks.filter((link) => link.type === "other");
+
+    for (const link of otherLinks) {
+      yield await generateContactItem(link);
+    }
   }
 
   yield `
     </div>
   `;
 
-  if (mac?.knowledge?.languages) {
+  const languages = mac.knowledge?.languages ?? [];
+  if (languages.length) {
     yield `
       <div class="left-column__languages">
         <div class="left-column__languages-title">
@@ -86,23 +87,30 @@ export const generateLeftColumn = generatorFrom(async function* (mac: ManfredAwe
         </div>
     
         <div class="left-column__language-groups">
-            {% assign languages = mac.knowledge.languages | where_exp: "language", "language.level == nil" | map: "name" %}
-            {% include left-column/language-group.html level="" languages=languages %}
-    
-            {% assign languages = mac.knowledge.languages | where: "level", "Native or bilingual proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Native or bilingual proficiency" languages=languages %}
-    
-            {% assign languages = mac.knowledge.languages | where: "level", "Full professional proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Full professional proficiency" languages=languages %}
-    
-            {% assign languages = mac.knowledge.languages | where: "level", "Professional working proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Professional working proficiency" languages=languages %}
-    
-            {% assign languages = mac.knowledge.languages | where: "level", "Limited working proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Limited working proficiency" languages=languages %}
-    
-            {% assign languages = mac.knowledge.languages | where: "level", "Elementary proficiency" | map: "name" %}
-            {% include left-column/language-group.html level="Elementary proficiency" languages=languages %}
+    `;
+
+    const levels: (string | undefined)[] = [
+      undefined,
+      "Native or bilingual proficiency",
+      "Full professional proficiency",
+      "Professional working proficiency",
+      "Limited working proficiency",
+      "Elementary proficiency",
+    ];
+
+    const languagesByLevel = languages.reduce((acc, language) => {
+      const level = language.level && levels.includes(language.level) ? language.level : undefined;
+      const languages = acc.get(level) || [];
+      languages.push(language.name);
+      acc.set(level, languages);
+      return acc;
+    }, new Map<string | undefined, string[]>());
+
+    for (const level of levels) {
+      yield await generateLanguageGroup(level, languagesByLevel.get(level) ?? []);
+    }
+
+    yield `
         </div>
       </div>
     `;
