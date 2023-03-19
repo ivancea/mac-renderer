@@ -27,7 +27,9 @@ The action works by building your MAC repository and publishing it to GitHub Pag
 First, grant permission to actions in your repository to read and write to it.
 For that, go to `Settings` > `Actions` > `General`, and in the `Workflow permissions` section, select `Read and write permissions`.
 
-Then, create a workflow in `.github/workflows/deploy.yml` with this content (Replace the branch name you want to use):
+Then, go to the repository `Settings`, and in the `Pages` tab, in `Source`, choose `GitHub Actions`. This will enable the site.
+
+Finally, create a workflow in `.github/workflows/deploy.yml` with this content (Replace the branch name you want to use):
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -57,7 +59,5 @@ permissions:
 This will execute the build of the page every time you push to master, or when you manually trigger the workflow.
 
 The build will produce an artifact with the page and automatically deploy it GitHub Pages.
-
-If you haven't configured yet your GitHub Pages, go to the repository `Settings`, and in the `Pages` tab, choose `Deploy from a branch` in `Source` and select the `gh-pages` branch. This will enable the site, and launch another action to publish the branch every time it changes.
 
 After that, the GitHub page with your CV will be available at `https://<username>.github.io/<repository>/`.
