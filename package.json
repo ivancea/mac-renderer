@@ -1,6 +1,6 @@
 {
   "name": "mac-renderer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "ivancea",
   "license": "MIT",
   "main": "./build/index.js",
