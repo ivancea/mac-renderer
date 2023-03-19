@@ -1,17 +1,19 @@
 {
   "name": "mac-renderer",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "author": "ivancea",
   "license": "MIT",
   "main": "./build/index.js",
   "bin": "./build/cli.js",
   "scripts": {
     "build": "rimraf ./build && npm run generate && tsc -p tsconfig.build.json && npm run copy-files",
     "copy-files": "copyfiles ./{generated,images}/** ./build && copyfiles ./mac-schema.json ./build",
-    "generate": "npm run generate-schema && npm run generate-sass",
+    "generate": "rimraf ./generated && npm run generate-schema && npm run generate-sass",
     "generate-schema": "json2ts mac-schema.json generated/mac.d.ts --no-additionalProperties && replace-in-file \"/\\[k: string\\]: unknown;/g\" \"\" generated/mac.d.ts --isRegex",
     "generate-sass": "sass --style=compressed --no-source-map ./sass:./generated/styles && copyfiles --flat ./generated/styles/styles.css ./generated && rimraf ./generated/styles",
     "format": "prettier ./**/* --write",
-    "lint": "eslint . --ext .ts,.js"
+    "lint": "eslint . --ext .ts,.js",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@types/marked": "4.0.8",
@@ -32,5 +34,12 @@
     "escape-html": "1.0.3",
     "jsonschema": "1.4.1",
     "marked": "4.2.12"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ivancea/mac-renderer.git"
+  },
+  "files": [
+    "build"
+  ]
 }

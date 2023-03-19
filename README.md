@@ -10,6 +10,20 @@ You can edit and synchronize your MAC files with the Manfred app: <https://getma
 
 The resulting HTML is printable using the browser's print function, as it will avoid breaking blocks (Jobs, projects, highlights).
 
+## Library
+
+To use the library, install it with `npm install mac-renderer`, and use it like this:
+
+```ts
+import { ManfredAwesomicCV, generateHtml } from "mac-renderer";
+
+const yourCv: ManfredAwesomicCV = {
+  // ...
+};
+
+const html = await generateHtml(yourCv);
+```
+
 ## CLI
 
 Usage: `npx mac-renderer <input-file>`.
