@@ -12,7 +12,7 @@ async function main() {
 
   const pdf = await (generatePdf(
     { content: html },
-    { format: "A4", scale: 0.6 }
+    { format: "A4", scale: 0.6, printBackground: true }
   ) as unknown as Promise<Buffer>);
 
   await fs.writeFile("index.pdf", pdf);
