@@ -7,7 +7,7 @@
     "mac-renderer": "1.0.2"
   },
   "devDependencies": {
-    "@types/html-pdf-node": "^1.0.0",
+    "@types/html-pdf-node": "1.0.0",
     "ts-node": "10.9.1"
   }
 }
