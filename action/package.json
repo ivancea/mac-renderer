@@ -4,7 +4,7 @@
   },
   "dependencies": {
     "html-pdf-node": "1.0.8",
-    "mac-renderer": "1.0.2"
+    "mac-renderer": ".."
   },
   "devDependencies": {
     "@types/html-pdf-node": "1.0.0",

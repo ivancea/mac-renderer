@@ -18,31 +18,26 @@ runs:
     - name: Copy MAC to action directory
       shell: bash
       run: |
-        rsync --recursive --ignore-existing CV ${{ github.action_path }}/
+        rsync --recursive --ignore-existing CV ${{ github.action_path }}/action/
     - uses: actions/setup-node@v3
       with:
         node-version: 16
-    - name: Build package
+    - name: Generate pages
       shell: bash
-      working-directory: ${{ github.action_path }}
+      working-directory: ${{ github.action_path }}/action
       run: |
         npm ci
-        npm run build
-    - name: Generate HTML
-      shell: bash
-      working-directory: ${{ github.action_path }}
-      run: |
         mkdir page
-        npx . CV/MAC.json > page/index.html
+        npm start -- CV/MAC.json ./page
     - name: Create .nojekyll file
       shell: bash
-      working-directory: ${{ github.action_path }}
+      working-directory: ${{ github.action_path }}/action
       run: |
         touch ./page/.nojekyll
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
-        path: ${{ github.action_path }}/page
+        path: ${{ github.action_path }}/action/page
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v1
