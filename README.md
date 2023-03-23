@@ -30,7 +30,7 @@ Usage: `npx mac-renderer <input-file>`.
 
 ## Action
 
-The action works by building your MAC repository and publishing it to GitHub Pages, in a `gh-pages` branch. This branch shouldn't be modified, as anything there will be lost on deploy.
+The action works by generating a HTML and PDF version of your MAC and publishing it to GitHub Pages.
 
 ### Parameters
 
@@ -74,4 +74,4 @@ This will execute the build of the page every time you push to master, or when y
 
 The build will produce an artifact with the page and automatically deploy it GitHub Pages.
 
-After that, the GitHub page with your CV will be available at `https://<username>.github.io/<repository>/`.
+After that, the GitHub page with your CV will be available at `https://<username>.github.io/<repository>/`, and the CV at `https://<username>.github.io/<repository>/cv.pdf`.
