@@ -7,9 +7,6 @@ async function main() {
   const macPath = process.argv[2];
   const outputPath = process.argv[3];
 
-  console.log(path.resolve(process.cwd(), macPath));
-  console.log(path.resolve(process.cwd(), outputPath));
-
   const rawCv = await fs.readFile(path.resolve(process.cwd(), macPath));
   const cv: ManfredAwesomicCV = JSON.parse(rawCv.toString());
 
