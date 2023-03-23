@@ -59,7 +59,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: ivancea/mac-renderer@v2
+      - uses: ivancea/mac-renderer@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
