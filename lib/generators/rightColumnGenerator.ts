@@ -6,6 +6,7 @@ import { generateJobs } from "./rightColumn/jobsGenerator";
 import { generateProjects } from "./rightColumn/projectsGenerator";
 import { generateSection } from "./rightColumn/sectionGenerator";
 import { generateSkillGroup } from "./rightColumn/skillGroupGenerator";
+import { generateStudies } from "./rightColumn/studiesGenerator";
 
 export const generateRightColumn = generatorFrom(async function* (mac: ManfredAwesomicCV) {
   if (mac.aboutMe.profile.description) {
@@ -46,6 +47,10 @@ export const generateRightColumn = generatorFrom(async function* (mac: ManfredAw
 
   if (mac.experience?.jobs?.length) {
     yield await generateSection("Work experience", await generateJobs(mac.experience.jobs));
+  }
+
+  if (mac.knowledge?.studies?.length) {
+    yield await generateSection("Studies", await generateStudies(mac.knowledge.studies));
   }
 
   if (mac.experience?.projects?.length) {

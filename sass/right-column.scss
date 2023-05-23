@@ -85,6 +85,68 @@
     }
   }
 
+  .right-column__studies {
+    @include linear-layout(column, 2em);
+
+    // If this changes, the default icon must be changed too
+    $color: black;
+
+    // For the left bar
+    border-left: 0.15em solid $color;
+    padding-left: 2em;
+
+    .right-column__study {
+      break-inside: avoid;
+
+      // Show a circle in the left border
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        background-color: $color;
+        position: relative;
+        top: 2.5em;
+        left: -2.6em;
+      }
+
+      .right-column__study-institution {
+        @include linear-layout(column, 1em);
+        // Set margin here as parent can't use gap because of pseudo-element
+        margin-bottom: 1em;
+
+        .right-column__study-institution-title {
+          @include linear-layout(row, 1.5em, $center: true);
+
+          .right-column__study-institution-image {
+            width: 4em;
+            height: 4em;
+            object-fit: contain;
+          }
+
+          .right-column__study-institution-name {
+            font-size: 1.5em;
+            font-weight: 600;
+          }
+        }
+
+        .right-column__study-institution-url {
+          display: block;
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #55a;
+
+          .right-column__study-institution-url-icon {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+
   .right-column__projects {
     @include linear-layout(column, 2em);
 
