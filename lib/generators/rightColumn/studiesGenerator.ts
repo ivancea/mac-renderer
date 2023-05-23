@@ -44,41 +44,41 @@ export const generateStudies = generatorFrom(async function* (
                 ${institution?.name}
               </div>
             </div>
-          </div>
-      `;
-
-      yield `
-          <div class="common__roles">
-            <div class="common__role">
-              <div class="common__role-dates">
-                ${
-                  new Date(study.startDate).toLocaleDateString("en-US", {
-                        month: "2-digit",
-                        year: "numeric",
-                      })
-                } - ${
-            study.finishDate
-              ? new Date(study.finishDate).toLocaleDateString("en-US", {
-                  month: "2-digit",
-                  year: "numeric",
-                })
-              : study.studyType === "certification" ? "Doesn't expire" : "Present"
-          }
-              </div>
-              <div class="common__role-title">
-                ${study.name}
-                ${await generateTypeLabels(study.studyType)}
-              </div>
       `;
 
       if (institution?.URL) {
         yield `
-          <a class="common__role-url" href="${institution.URL}" target="_blank">
-            <img class="common__role-url-icon" src="${await assets.linkIcon}" alt="Link">
+          <a class="right-column__study-institution-url" href="${institution.URL}" target="_blank">
+            <img class="right-column__study-institution-url-icon" src="${await assets.linkIcon}" alt="Link">
             ${decodeURI(institution.URL.replace(/https?:\/\//, ""))}
           </a>
         `;
       }
+      
+      yield `
+        </div>
+        <div class="common__roles">
+          <div class="common__role">
+            <div class="common__role-dates">
+              ${
+                new Date(study.startDate).toLocaleDateString("en-US", {
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+              } ${
+          study.finishDate
+            ? " - " + new Date(study.finishDate).toLocaleDateString("en-US", {
+                month: "2-digit",
+                year: "numeric",
+              })
+            : study.studyType !== "certification" ? " - Present" : ""
+        }
+            </div>
+            <div class="common__role-title">
+              ${study.name}
+              ${await generateTypeLabels(study.studyType)}
+            </div>
+      `;
 
       if (institution?.description && institution.description.length) {
         yield `
