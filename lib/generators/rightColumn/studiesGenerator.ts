@@ -22,9 +22,6 @@ export const generateStudies = generatorFrom(async function* (
     for (const study of studies) {
       const institution = study.institution;
 
-      let imageUrl = await assets.studyDefaultIcon;
-      let imageAlt = "Study";
-
       yield `
         <div class="right-column__study">
           <div class="right-column__study-institution">
