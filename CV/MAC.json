@@ -726,6 +726,111 @@
           "type": "technology"
         }
       }
+    ],
+    "studies": [
+      {
+        "studyType": "selfTraining",
+        "degreeAchieved": false,
+        "name": "Learning Java",
+        "startDate": "2023-03-01",
+        "institution": {
+          "name": "Codecademy",
+          "URL": "https://www.codecademy.com/"
+        }
+      },
+      {
+        "studyType": "certification",
+        "degreeAchieved": false,
+        "name": "Google Data Analytics",
+        "startDate": "2023-01-01",
+        "institution": {
+          "name": "Google",
+          "URL": "https://www.coursera.org/account/accomplishments/specialization/certificate/4KGC9UEVGQ5D",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/05/10/cfdfdca4-058a-45a6-b5c1-025583a43c60_google_logo.png",
+            "alt": "google_logo.png"
+          }
+        },
+        "linkedCompetences": [
+          {
+            "name": "Google Sheets",
+            "type": "technology"
+          },
+          {
+            "name": "MySQL",
+            "type": "technology"
+          },
+          {
+            "name": "SQL",
+            "type": "technology"
+          }
+        ]
+      },
+      {
+        "studyType": "officialDegree",
+        "degreeAchieved": false,
+        "name": "Computer Engineering",
+        "startDate": "2019-09-01",
+        "institution": {
+          "name": "University of A Coruña",
+          "URL": "https://www.udc.es/",
+          "description": "Computer Engineering Degree",
+          "image": {
+            "link": "https://media-asgard.s3.eu-west-1.amazonaws.com/23/05/10/8072ed0b-bfc2-444c-bc51-41a3a47eff68_udc_logo.png",
+            "alt": "udc_logo.png"
+          }
+        },
+        "linkedCompetences": [
+          {
+            "name": "Apache",
+            "type": "technology"
+          },
+          {
+            "name": "Bash",
+            "type": "technology"
+          },
+          {
+            "name": "C",
+            "type": "technology"
+          },
+          {
+            "name": "C#",
+            "type": "technology"
+          },
+          {
+            "name": "CSS",
+            "type": "technology"
+          },
+          {
+            "name": "HTML",
+            "type": "technology"
+          },
+          {
+            "name": "JAVA",
+            "type": "technology"
+          },
+          {
+            "name": "JavaScript",
+            "type": "technology"
+          },
+          {
+            "name": "MySQL",
+            "type": "technology"
+          },
+          {
+            "name": "Python",
+            "type": "technology"
+          },
+          {
+            "name": "SQL",
+            "type": "technology"
+          },
+          {
+            "name": "Unity3D",
+            "type": "technology"
+          }
+        ]
+      }
     ]
   },
   "careerPreferences": {

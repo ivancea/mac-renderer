@@ -9,5 +9,11 @@ export const generateTypeLabels = generatorFrom(async function* (type: string | 
     yield `<span class="common__type-label">Side project</span>`;
   } else if (type == "personalAchievement") {
     yield `<span class="common__type-label">Achievement</span>`;
+  } else if (type == "officialDegree") {
+    yield `<span class="common__type-label">Official Degree</span>`;
+  } else if (type == "certification") {
+    yield `<span class="common__type-label">Certification</span>`;
+  } else if (type == "selfTraining") {
+    yield `<span class="common__type-label">Self Training</span>`;
   }
 });

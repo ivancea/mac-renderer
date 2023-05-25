@@ -17,5 +17,6 @@ export const assets = {
   linkedinIcon: asset("linkedin-icon.svg"),
   locationIcon: asset("location-icon.svg"),
   projectDefaultIcon: asset("project-default-icon.svg"),
+  studyDefaultIcon: asset("study-default-icon.svg"),
   twitterIcon: asset("twitter-icon.svg"),
 };
