@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import { Role } from "../../../generated/mac";
+import { Role } from "../../mac";
 import { generatorFrom } from "../../utils";
 import { generateSkills } from "./skillsGenerator";
 

@@ -1,25 +1,15 @@
 import { marked } from "marked";
-import { StudyType, PublicEntityDetails, Competence} from "../../../generated/mac";
 import { assets } from "../../assets";
-import { generatorFrom } from "../../utils";
-import { generateTypeLabels } from "../common/typeLabelGenerator";
+import { Study } from "../../mac";
+import { generatorFrom, sortByDates } from "../../utils";
 import { generateSkills } from "../common/skillsGenerator";
+import { generateTypeLabels } from "../common/typeLabelGenerator";
 
-export const generateStudies = generatorFrom(async function* (
-  studies: {
-    studyType?: StudyType;
-    degreeAchieved: boolean;
-    name: string;
-    startDate:  string;
-    institution?: PublicEntityDetails;
-    finishDate?: string;
-    linkedCompetences?: Competence[];
-  }[]
-) {
+export const generateStudies = generatorFrom(async function* (studies: Study[]) {
   if (studies.length) {
     yield `<div class="right-column__studies">`;
 
-    for (const study of studies) {
+    for (const study of sortByDates(studies)) {
       const institution = study.institution;
 
       yield `
@@ -51,25 +41,26 @@ export const generateStudies = generatorFrom(async function* (
           </a>
         `;
       }
-      
+
       yield `
         </div>
         <div class="common__roles">
           <div class="common__role">
             <div class="common__role-dates">
-              ${
-                new Date(study.startDate).toLocaleDateString("en-US", {
-                      month: "2-digit",
-                      year: "numeric",
-                    })
-              } ${
-          study.finishDate
-            ? " - " + new Date(study.finishDate).toLocaleDateString("en-US", {
+              ${new Date(study.startDate).toLocaleDateString("en-US", {
                 month: "2-digit",
                 year: "numeric",
-              })
-            : study.studyType !== "certification" ? " - Present" : ""
-        }
+              })} ${
+        study.finishDate
+          ? " - " +
+            new Date(study.finishDate).toLocaleDateString("en-US", {
+              month: "2-digit",
+              year: "numeric",
+            })
+          : study.studyType !== "certification"
+          ? " - Present"
+          : ""
+      }
             </div>
             <div class="common__role-title">
               ${study.name}

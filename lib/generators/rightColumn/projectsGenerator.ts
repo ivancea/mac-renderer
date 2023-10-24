@@ -1,21 +1,15 @@
 import { marked } from "marked";
-import { ProjectType, PublicEntityDetails, Role } from "../../../generated/mac";
 import { assets } from "../../assets";
-import { generatorFrom } from "../../utils";
+import { Project } from "../../mac";
+import { generatorFrom, sortByDates } from "../../utils";
 import { generateRoles } from "../common/rolesGenerator";
 import { generateTypeLabels } from "../common/typeLabelGenerator";
 
-export const generateProjects = generatorFrom(async function* (
-  projects: {
-    details?: PublicEntityDetails;
-    type?: ProjectType;
-    roles: Role[];
-  }[]
-) {
+export const generateProjects = generatorFrom(async function* (projects: Project[]) {
   if (projects.length) {
     yield `<div class="right-column__projects">`;
 
-    for (const project of projects) {
+    for (const project of sortByDates(projects)) {
       const { details, roles } = project;
 
       let imageUrl = await assets.projectDefaultIcon;

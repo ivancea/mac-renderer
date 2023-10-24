@@ -1,4 +1,4 @@
-import { Competence } from "../../../generated/mac";
+import { Competence } from "../../mac";
 import { generatorFrom } from "../../utils";
 import { generateSkills } from "../common/skillsGenerator";
 

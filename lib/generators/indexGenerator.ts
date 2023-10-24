@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { ManfredAwesomicCV } from "../../generated/mac";
+import { ManfredAwesomicCV } from "../mac";
 import { generatorFrom } from "../utils";
 import { generateLeftColumn } from "./leftColumnGenerator";
 import { generateRightColumn } from "./rightColumnGenerator";

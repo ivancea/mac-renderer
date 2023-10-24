@@ -1,22 +1,14 @@
-import { Competence, PublicArtifactType, PublicEntityDetails, Tags } from "../../../generated/mac";
 import { assets } from "../../assets";
-import { generatorFrom } from "../../utils";
+import { Highlight } from "../../mac";
+import { generatorFrom, sortByDates } from "../../utils";
 import { generateSkills } from "../common/skillsGenerator";
 import { generateTypeLabels } from "../common/typeLabelGenerator";
 
-export const generateHighlights = generatorFrom(async function* (
-  highlights: {
-    details: PublicEntityDetails;
-    type?: PublicArtifactType;
-    publishingDate?: string;
-    relatedCompetences?: Competence[];
-    tags?: Tags;
-  }[]
-) {
+export const generateHighlights = generatorFrom(async function* (highlights: Highlight[]) {
   if (highlights.length) {
     yield `<div class="right-column__highlights">`;
 
-    for (const highlight of highlights) {
+    for (const highlight of sortByDates(highlights)) {
       const { details } = highlight;
 
       let imageUrl = await assets.highlightDefaultIcon;

@@ -1,21 +1,15 @@
-import { OrganizationType, PublicEntityDetails, Role } from "../../../generated/mac";
 import { assets } from "../../assets";
-import { generatorFrom } from "../../utils";
+import { Job } from "../../mac";
+import { generatorFrom, sortByDates } from "../../utils";
 import { generateRoles } from "../common/rolesGenerator";
 
-export const generateJobs = generatorFrom(async function* (
-  jobs: {
-    organization: PublicEntityDetails;
-    type?: OrganizationType;
-    roles: [Role, ...Role[]];
-  }[]
-) {
+export const generateJobs = generatorFrom(async function* (jobs: Job[]) {
   if (jobs.length) {
     yield `
       <div class="right-column__jobs">
     `;
 
-    for (const job of jobs) {
+    for (const job of sortByDates(jobs)) {
       const organization = job.organization;
 
       yield `

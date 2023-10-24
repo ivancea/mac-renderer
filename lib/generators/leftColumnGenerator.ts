@@ -1,4 +1,4 @@
-import { ManfredAwesomicCV } from "../../generated/mac";
+import { ManfredAwesomicCV } from "../mac";
 import { assets } from "../assets";
 import { generatorFrom } from "../utils";
 import { generateContactItem } from "./leftColumn/contactItemGenerator";

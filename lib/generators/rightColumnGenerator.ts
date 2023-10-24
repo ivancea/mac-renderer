@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import { Competence, ManfredAwesomicCV } from "../../generated/mac";
+import { Competence, ManfredAwesomicCV } from "../mac";
 import { generatorFrom } from "../utils";
 import { generateHighlights } from "./rightColumn/highlightsGenerator";
 import { generateJobs } from "./rightColumn/jobsGenerator";
