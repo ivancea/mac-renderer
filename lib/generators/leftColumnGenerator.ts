@@ -1,5 +1,5 @@
-import { ManfredAwesomicCV } from "../mac";
 import { assets } from "../assets";
+import { Language, ManfredAwesomicCV } from "../mac";
 import { generatorFrom } from "../utils";
 import { generateContactItem } from "./leftColumn/contactItemGenerator";
 import { generateLanguageGroup } from "./leftColumn/languageGroupGenerator";
@@ -101,10 +101,10 @@ export const generateLeftColumn = generatorFrom(async function* (mac: ManfredAwe
     const languagesByLevel = languages.reduce((acc, language) => {
       const level = language.level && levels.includes(language.level) ? language.level : undefined;
       const languages = acc.get(level) || [];
-      languages.push(language.name);
+      languages.push(language);
       acc.set(level, languages);
       return acc;
-    }, new Map<string | undefined, string[]>());
+    }, new Map<string | undefined, Language[]>());
 
     for (const level of levels) {
       yield await generateLanguageGroup(level, languagesByLevel.get(level) ?? []);

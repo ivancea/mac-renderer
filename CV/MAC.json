@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/v0.3/schema/schema.json",
+  "$schema": "https://raw.githubusercontent.com/getmanfred/mac/master/schema/schema.json",
   "settings": {
     "language": "ES",
     "MACVersion": "0.3"
@@ -588,7 +588,9 @@
             "type": "technology"
           }
         ],
-        "tags": ["Contest"]
+        "tags": [
+          "Contest"
+        ]
       },
       {
         "details": {
@@ -612,22 +614,31 @@
             "type": "technology"
           }
         ],
-        "tags": ["Contest"]
+        "tags": [
+          "Contest"
+        ]
       }
     ]
   },
   "knowledge": {
     "languages": [
       {
-        "name": "English"
+        "name": "EN",
+        "fullName": "English"
       },
       {
-        "name": "Galician",
+        "name": "GA",
+        "fullName": "Galician",
         "level": "Native or bilingual proficiency"
       },
       {
-        "name": "Spanish",
+        "name": "ES",
+        "fullName": "Spanish",
         "level": "Native or bilingual proficiency"
+      },
+      {
+        "name": "PT",
+        "level": "Elementary proficiency"
       }
     ],
     "hardSkills": [

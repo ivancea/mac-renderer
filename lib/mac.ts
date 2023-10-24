@@ -1,42 +1,28 @@
-import {
-  Competence,
-  OrganizationType,
-  ProjectType,
-  PublicArtifactType,
-  PublicEntityDetails,
-  Role,
-  StudyType,
-  Tags,
-} from "../generated/mac";
+import { ManfredAwesomicCV } from "../generated/mac";
 
 export * from "../generated/mac";
 
-export type Job = {
-  organization: PublicEntityDetails;
-  type?: OrganizationType;
-  roles: [Role, ...Role[]];
-};
+export type Language = Exclude<
+  Exclude<ManfredAwesomicCV["knowledge"], undefined>["languages"],
+  undefined
+>[0];
 
-export type Project = {
-  details?: PublicEntityDetails;
-  type?: ProjectType;
-  roles: Role[];
-};
+export type Job = Exclude<
+  Exclude<ManfredAwesomicCV["experience"], undefined>["jobs"],
+  undefined
+>[0];
 
-export type Study = {
-  studyType?: StudyType;
-  degreeAchieved: boolean;
-  name: string;
-  startDate: string;
-  institution?: PublicEntityDetails;
-  finishDate?: string;
-  linkedCompetences?: Competence[];
-};
+export type Project = Exclude<
+  Exclude<ManfredAwesomicCV["experience"], undefined>["projects"],
+  undefined
+>[0];
 
-export type Highlight = {
-  details: PublicEntityDetails;
-  type?: PublicArtifactType;
-  publishingDate?: string;
-  relatedCompetences?: Competence[];
-  tags?: Tags;
-};
+export type Study = Exclude<
+  Exclude<ManfredAwesomicCV["knowledge"], undefined>["studies"],
+  undefined
+>[0];
+
+export type Highlight = Exclude<
+  Exclude<ManfredAwesomicCV["experience"], undefined>["publicArtifacts"],
+  undefined
+>[0];

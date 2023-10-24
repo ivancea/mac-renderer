@@ -1,8 +1,9 @@
+import { Language } from "../../mac";
 import { generatorFrom } from "../../utils";
 
 export const generateLanguageGroup = generatorFrom(async function* (
   level: string | undefined,
-  languages: string[]
+  languages: Language[]
 ) {
   if (languages.length) {
     yield `
@@ -29,7 +30,7 @@ export const generateLanguageGroup = generatorFrom(async function* (
     for (const language of languages) {
       yield `
         <div class="left-column__language">
-          ${language}
+          ${language.fullName ?? language.name}
         </div>
       `;
     }
