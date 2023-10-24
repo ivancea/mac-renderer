@@ -75,3 +75,10 @@ This will execute the build of the page every time you push to master, or when y
 The build will produce an artifact with the page and automatically deploy it GitHub Pages.
 
 After that, the GitHub page with your CV will be available at `https://<username>.github.io/<repository>/`, and the CV at `https://<username>.github.io/<repository>/cv.pdf`.
+
+## Contributing
+
+### Development
+
+To work and test the library, you can use `npx mac-renderer CV/MAC.json > CV/snapshot.html` to generate the HTML in the snapshot file.
+This file is meant to be a test to both manually see how the CV looks, and serve as a snapshot test to push to the repository and know what changed, if anything.
