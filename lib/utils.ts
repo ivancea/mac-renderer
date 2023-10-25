@@ -1,3 +1,4 @@
+import { isEqual, isNil } from "lodash";
 import { Highlight, Job, Project, Study } from "./mac";
 
 export function generatorFrom<T extends unknown[]>(
@@ -25,7 +26,11 @@ export function sortByDates(
     return elements;
   }
 
-  if (isArrayOfType<Job[] | Project[]>(elements, (e) => "roles" in e)) {
+  if (isArrayOfType<Job[]>(elements, (e) => "organization" in e && "roles" in e)) {
+    return sortJobs(elements);
+  }
+
+  if (isArrayOfType<Project[]>(elements, (e) => "roles" in e)) {
     return sortByDatesInternal(
       elements,
       (e) => e.roles[0].startDate,
@@ -52,6 +57,48 @@ export function sortByDates(
 
     return a.startDate < b.startDate ? 1 : -1;
   });
+}
+
+function sortJobs(jobs: Job[]): Job[] {
+  const flattenedRoles = jobs.flatMap((job) => {
+    return job.roles.map((role) => {
+      return {
+        role: role,
+        organization: job.organization,
+        type: job.type,
+      };
+    });
+  });
+
+  const sortedRoles = sortByDatesInternal(
+    flattenedRoles,
+    (e) => e.role.startDate,
+    (e) => e.role.finishDate
+  );
+
+  const finalJobs: Job[] = [];
+
+  for (const role of sortedRoles) {
+    const lastJob = finalJobs[finalJobs.length - 1];
+
+    if (
+      isNil(lastJob) ||
+      !isEqual(
+        { organization: lastJob.organization, type: lastJob.type },
+        { organization: role.organization, type: role.type }
+      )
+    ) {
+      finalJobs.push({
+        organization: role.organization,
+        type: role.type,
+        roles: [role.role],
+      });
+    } else {
+      lastJob.roles.push(role.role);
+    }
+  }
+
+  return finalJobs;
 }
 
 function isArrayOfType<T extends object[]>(
