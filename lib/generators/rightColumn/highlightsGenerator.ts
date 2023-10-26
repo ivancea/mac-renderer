@@ -1,3 +1,4 @@
+import { marked } from "marked";
 import { assets } from "../../assets";
 import { Highlight } from "../../mac";
 import { generatorFrom, sortByDates } from "../../utils";
@@ -56,7 +57,7 @@ export const generateHighlights = generatorFrom(async function* (highlights: Hig
                 details?.description
                   ? `
                 <div class="right-column__highlight-details-description">
-                  ${details.description}
+                  ${marked(details.description)}
                 </div>
               `
                   : ""
