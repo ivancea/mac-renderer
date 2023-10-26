@@ -18,10 +18,12 @@ export const generateJobs = generatorFrom(async function* (jobs: Job[]) {
             <div class="right-column__job-organization-title">
       `;
 
-      if (organization.image && "link" in organization.image) {
+      const organizationImage = organization.image;
+
+      if (organizationImage && "link" in organizationImage) {
         yield `<img class="right-column__job-organization-image" src="${
-          organization.image.link
-        }" alt="${("alt" in organization.image && organization.image.alt) || ""}"/>`;
+          organizationImage.link
+        }" alt="${organizationImage.alt || ""}"/>`;
       } else {
         yield `<img class="right-column__job-organization-image" src="${await assets.jobDefaultIcon}" alt="Job">`;
       }

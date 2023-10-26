@@ -1,7 +1,7 @@
 import { Language } from "../../mac";
 import { generatorFrom } from "../../utils";
 
-export const generateLanguageGroup = generatorFrom(async function* (
+export const generateLanguageGroup = generatorFrom(function* (
   level: string | undefined,
   languages: Language[]
 ) {

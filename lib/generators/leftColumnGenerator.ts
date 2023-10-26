@@ -44,8 +44,7 @@ export const generateLeftColumn = generatorFrom(async function* (mac: ManfredAwe
     // First, the public contact links
     const contact = mac.careerPreferences?.contact;
 
-    const publicProfileLinks =
-      (contact && "publicProfiles" in contact && contact?.publicProfiles) || [];
+    const publicProfileLinks = contact && "publicProfiles" in contact ? contact.publicProfiles : [];
 
     if (publicProfileLinks.length) {
       for (const link of publicProfileLinks) {
@@ -56,8 +55,9 @@ export const generateLeftColumn = generatorFrom(async function* (mac: ManfredAwe
     // Filter relevant links that aren't contact ones
     const publicProfileUrls = publicProfileLinks.map((link) => link.URL);
 
-    const nonContactLinks =
-      mac.aboutMe.relevantLinks?.filter((link) => !publicProfileUrls.includes(link.URL)) ?? [];
+    const nonContactLinks = mac.aboutMe.relevantLinks.filter(
+      (link) => !publicProfileUrls.includes(link.URL),
+    );
 
     // Second, the known links
     const knownLinks = nonContactLinks.filter((link) => link.type !== "other");

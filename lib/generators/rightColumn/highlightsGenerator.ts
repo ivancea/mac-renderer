@@ -15,16 +15,16 @@ export const generateHighlights = generatorFrom(async function* (highlights: Hig
       let imageUrl = await assets.highlightDefaultIcon;
       let imageAlt = "Highlight";
 
-      if (details?.image && "link" in details.image) {
+      if (details.image && "link" in details.image) {
         imageUrl = details.image.link;
       }
 
-      if (details?.image && "alt" in details.image) {
-        imageAlt = details.image.alt as string;
+      if (details.image && details.image.alt) {
+        imageAlt = details.image.alt;
       }
 
       let urlText = "";
-      if (details?.URL) {
+      if (details.URL) {
         urlText = `${decodeURI(details.URL.replace(/https?:\/\//, ""))}`;
       }
 
@@ -33,19 +33,19 @@ export const generateHighlights = generatorFrom(async function* (highlights: Hig
           <div class="right-column__highlight-title">
             <img class="right-column__highlight-title-image" src="${imageUrl}" alt="${imageAlt}" />
             <div class="right-column__highlight-title-name">
-              ${details?.name}
+              ${details.name}
               ${await generateTypeLabels(highlight.type)}
             </div>
           </div>
           ${
-            urlText || details?.description
+            urlText || details.description
               ? `
             <div class="right-column__highlight-details">
               ${
                 urlText
                   ? `
                 <a class="right-column__highlight-details-url" href="${
-                  details?.URL
+                  details.URL
                 }" target="_blank">
                   <img class="right-column__highlight-details-url-icon" src="${await assets.linkIcon}" alt="Link" />
                   ${urlText}
@@ -54,7 +54,7 @@ export const generateHighlights = generatorFrom(async function* (highlights: Hig
                   : ""
               }
               ${
-                details?.description
+                details.description
                   ? `
                 <div class="right-column__highlight-details-description">
                   ${marked(details.description)}

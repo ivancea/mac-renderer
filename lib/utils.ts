@@ -2,7 +2,7 @@ import { isEqual, isNil } from "lodash";
 import { Highlight, Job, Project, Study } from "./mac";
 
 export function generatorFrom<T extends unknown[]>(
-  generator: (...args: T) => AsyncGenerator<string>
+  generator: (...args: T) => AsyncGenerator<string> | Generator<string>
 ): (...args: T) => Promise<string> {
   return async (...args: T) => {
     const parts = [];

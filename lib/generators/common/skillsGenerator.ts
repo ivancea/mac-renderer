@@ -1,6 +1,6 @@
 import { generatorFrom } from "../../utils";
 
-export const generateSkills = generatorFrom(async function* (skills: string[]) {
+export const generateSkills = generatorFrom(function* (skills: string[]) {
   yield `
     <div class="common__skills">
   `;

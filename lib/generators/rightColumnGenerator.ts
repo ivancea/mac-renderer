@@ -14,7 +14,7 @@ export const generateRightColumn = generatorFrom(async function* (mac: ManfredAw
       "About me",
       `
         <div class="right-column__about-me">
-          ${await marked(mac.aboutMe.profile.description)}
+          ${marked(mac.aboutMe.profile.description)}
         </div>
       `
     );
