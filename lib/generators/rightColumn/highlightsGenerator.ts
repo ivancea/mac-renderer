@@ -4,6 +4,7 @@ import { Highlight } from "../../mac";
 import { generatorFrom, sortByDates } from "../../utils";
 import { generateSkills } from "../common/skillsGenerator";
 import { generateTypeLabels } from "../common/typeLabelGenerator";
+import { makeLink } from "../../links";
 
 export const generateHighlights = generatorFrom(async function* (highlights: Highlight[]) {
   if (highlights.length) {
@@ -23,10 +24,7 @@ export const generateHighlights = generatorFrom(async function* (highlights: Hig
         imageAlt = details.image.alt;
       }
 
-      let urlText = "";
-      if (details.URL) {
-        urlText = `${decodeURI(details.URL.replace(/https?:\/\//, ""))}`;
-      }
+      const link = await makeLink(details.URL);
 
       yield `
         <div class="right-column__highlight">
@@ -38,17 +36,15 @@ export const generateHighlights = generatorFrom(async function* (highlights: Hig
             </div>
           </div>
           ${
-            urlText || details.description
+            link || details.description
               ? `
             <div class="right-column__highlight-details">
               ${
-                urlText
+                link
                   ? `
-                <a class="right-column__highlight-details-url" href="${
-                  details.URL
-                }" target="_blank">
-                  <img class="right-column__highlight-details-url-icon" src="${await assets.linkIcon}" alt="Link" />
-                  ${urlText}
+                <a class="right-column__highlight-details-url" href="${link.url}" target="_blank">
+                  <img class="right-column__highlight-details-url-icon" src="${link.icon}" alt="${link.alt}" />
+                  ${link.text}
                 </a>
               `
                   : ""
@@ -69,7 +65,7 @@ export const generateHighlights = generatorFrom(async function* (highlights: Hig
           ${
             highlight.publishingDate
               ? `<div class="right-column__highlight-date">${new Date(
-                  highlight.publishingDate
+                  highlight.publishingDate,
                 ).toLocaleDateString("en-US", { month: "2-digit", year: "numeric" })}</div>`
               : ""
           }

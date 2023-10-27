@@ -1,4 +1,5 @@
 import { assets } from "../../assets";
+import { makeLink } from "../../links";
 import { Job } from "../../mac";
 import { generatorFrom, sortByDates } from "../../utils";
 import { generateRoles } from "../common/rolesGenerator";
@@ -36,10 +37,12 @@ export const generateJobs = generatorFrom(async function* (jobs: Job[]) {
       `;
 
       if (organization.URL) {
+        const link = await makeLink(organization.URL);
+
         yield `
-          <a class="right-column__job-organization-url" href="${organization.URL}" target="_blank">
-            <img class="right-column__job-organization-url-icon" src="${await assets.linkIcon}" alt="Link">
-            ${decodeURI(organization.URL.replace(/https?:\/\//, ""))}
+          <a class="right-column__job-organization-url" href="${link.url}" target="_blank">
+            <img class="right-column__job-organization-url-icon" src="${link.icon}" alt="${link.alt}">
+            ${link.text}
           </a>
         `;
       }

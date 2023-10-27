@@ -4,6 +4,7 @@ import { Study } from "../../mac";
 import { generatorFrom, sortByDates } from "../../utils";
 import { generateSkills } from "../common/skillsGenerator";
 import { generateTypeLabels } from "../common/typeLabelGenerator";
+import { makeLink } from "../../links";
 
 export const generateStudies = generatorFrom(async function* (studies: Study[]) {
   if (studies.length) {
@@ -34,10 +35,12 @@ export const generateStudies = generatorFrom(async function* (studies: Study[]) 
       `;
 
       if (institution?.URL) {
+        const link = await makeLink(institution.URL);
+
         yield `
-          <a class="right-column__study-institution-url" href="${institution.URL}" target="_blank">
-            <img class="right-column__study-institution-url-icon" src="${await assets.linkIcon}" alt="Link">
-            ${decodeURI(institution.URL.replace(/https?:\/\//, ""))}
+          <a class="right-column__study-institution-url" href="${link.url}" target="_blank">
+            <img class="right-column__study-institution-url-icon" src="${link.icon}" alt="${link.alt}">
+            ${link.text}
           </a>
         `;
       }
@@ -51,16 +54,16 @@ export const generateStudies = generatorFrom(async function* (studies: Study[]) 
                 month: "2-digit",
                 year: "numeric",
               })} ${
-        study.finishDate
-          ? " - " +
-            new Date(study.finishDate).toLocaleDateString("en-US", {
-              month: "2-digit",
-              year: "numeric",
-            })
-          : study.studyType !== "certification"
-          ? " - Present"
-          : ""
-      }
+                study.finishDate
+                  ? " - " +
+                    new Date(study.finishDate).toLocaleDateString("en-US", {
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+                  : study.studyType !== "certification"
+                  ? " - Present"
+                  : ""
+              }
             </div>
             <div class="common__role-title">
               ${study.name}

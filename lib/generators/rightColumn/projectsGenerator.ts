@@ -4,6 +4,7 @@ import { Project } from "../../mac";
 import { generatorFrom, sortByDates } from "../../utils";
 import { generateRoles } from "../common/rolesGenerator";
 import { generateTypeLabels } from "../common/typeLabelGenerator";
+import { makeLink } from "../../links";
 
 export const generateProjects = generatorFrom(async function* (projects: Project[]) {
   if (projects.length) {
@@ -23,10 +24,7 @@ export const generateProjects = generatorFrom(async function* (projects: Project
         imageAlt = details.image.alt as string;
       }
 
-      let urlText = "";
-      if (details?.URL) {
-        urlText = `${decodeURI(details.URL.replace(/https?:\/\//, ""))}`;
-      }
+      const link = await makeLink(details?.URL);
 
       yield `
         <div class="right-column__project">
@@ -38,15 +36,15 @@ export const generateProjects = generatorFrom(async function* (projects: Project
             </div>
           </div>
           ${
-            urlText || details?.description
+            link || details?.description
               ? `
             <div class="right-column__project-details">
               ${
-                urlText
+                link
                   ? `
-                <a class="right-column__project-details-url" href="${details?.URL}" target="_blank">
-                  <img class="right-column__project-details-url-icon" src="${await assets.linkIcon}" alt="Link" />
-                  ${urlText}
+                <a class="right-column__project-details-url" href="${link.url}" target="_blank">
+                  <img class="right-column__project-details-url-icon" src="${link.icon}" alt="${link.alt}" />
+                  ${link.text}
                 </a>
               `
                   : ""

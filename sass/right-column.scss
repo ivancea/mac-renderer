@@ -70,14 +70,15 @@
         }
 
         .right-column__job-organization-url {
-          display: block;
+          @include linear-layout(row, 1em, $center: true);
+
           font-size: 0.8em;
           text-decoration: none;
           color: #55a;
 
           .right-column__job-organization-url-icon {
-            width: 1em;
-            height: 1em;
+            width: 1.2em;
+            height: 1.2em;
             object-fit: contain;
           }
         }
@@ -132,14 +133,15 @@
         }
 
         .right-column__study-institution-url {
-          display: block;
+          @include linear-layout(row, 1em, $center: true);
+
           font-size: 0.8em;
           text-decoration: none;
           color: #55a;
 
           .right-column__study-institution-url-icon {
-            width: 1em;
-            height: 1em;
+            width: 1.2em;
+            height: 1.2em;
             object-fit: contain;
           }
         }
@@ -195,13 +197,15 @@
         margin-bottom: 1em;
 
         .right-column__project-details-url {
+          @include linear-layout(row, 1em, $center: true);
+
           font-size: 0.8em;
           text-decoration: none;
           color: #55a;
 
           .right-column__project-details-url-icon {
-            width: 1em;
-            height: 1em;
+            width: 1.2em;
+            height: 1.2em;
             object-fit: contain;
           }
         }
@@ -262,13 +266,15 @@
         margin-bottom: 1em;
 
         .right-column__highlight-details-url {
+          @include linear-layout(row, 1em, $center: true);
+
           font-size: 0.8em;
           text-decoration: none;
           color: #55a;
 
           .right-column__highlight-details-url-icon {
-            width: 1em;
-            height: 1em;
+            width: 1.2em;
+            height: 1.2em;
             object-fit: contain;
           }
         }
