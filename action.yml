@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Check that the repository is correct
       shell: bash
       run: |
@@ -19,7 +19,7 @@ runs:
       shell: bash
       run: |
         rsync --recursive --ignore-existing CV ${{ github.action_path }}/action/
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
         node-version: 16
     - name: Generate pages
@@ -36,9 +36,9 @@ runs:
       run: |
         touch ./page/.nojekyll
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: ${{ github.action_path }}/action/page
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v1
+      uses: actions/deploy-pages@v4
